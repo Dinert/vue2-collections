@@ -20,7 +20,7 @@ VueRouter.prototype.replace = function push (location) {
 const routes = [
     {
         path: '/',
-        redirect: '/home',
+        redirect: '/leaflet',
         component: Layout,
         children: [
           {
@@ -32,30 +32,16 @@ const routes = [
         ]
     },
     {
-        path: '/attendance',
+        path: '/leaflet',
+        redirect: '/leaflet/windy',
         component: Layout,
-        redirect: '/attendance/index',
         children: [
             {
-              path: 'index',
-              component: () => import('@/views/Attendance'),
-              name: 'Attendance',
-              meta: { title: '考勤情况录入'}
+                path: 'windy',
+                component: () => import('@/views/Leaflet/Windy.vue'),
+                name: 'Windy'
             }
-          ]
-    },
-    {
-        path: '/star',
-        component: Layout,
-        redirect: '/star/index',
-        children: [
-            {
-              path: 'index',
-              component: () => import('@/views/Star'),
-              name: 'Star',
-              meta: { title: '月度服务之星'}
-            }
-          ]
+        ]
     },
     {
         path: '/login',

@@ -7,7 +7,7 @@
             :index="subMenuItems.url"
         >
             <template slot="title">
-                <i class="el-icon el-icon-menu"></i>
+                <i :class="'el-icon ' + subMenuItems.icon"></i>
                 <span class="el-menu-item-name">{{ subMenuItems.caption }}</span>
 
             </template>
@@ -22,7 +22,8 @@
                     :index="child.url"
                     @click="menuItemClick(child)"
                 >
-                    <i class="el-icon el-icon-location"></i>
+                    <i :class="'el-icon ' + child.icon"></i>
+
                     <span class="el-menu-item-name">{{ child.caption }}</span>
 
                 </el-menu-item>
@@ -34,7 +35,8 @@
                 :disabled="!getNavMenuCollapse"
             >
                 <el-menu-item :index="subMenuItems.url" @click="menuItemClick(subMenuItems)">
-                    <i class="el-icon el-icon-menu"></i>
+                    <i :class="'el-icon ' + subMenuItems.icon"></i>
+
                     <span class="el-menu-item-name">{{ subMenuItems.caption }}</span>
                 </el-menu-item>
             </el-tooltip>

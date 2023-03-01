@@ -5,7 +5,7 @@
         ></div>
 
         <div v-if="getHeaderShow" class="layout-top">
-            <span class="layout-top-text">后台管理系统</span>
+            <h1 class="layout-top-text" style="margin: 0;">一个炫酷的演示平台</h1>
         </div>
 
         <div class="layout-body" :class="{headerShow: getHeaderShow}">

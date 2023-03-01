@@ -7,7 +7,7 @@ const whiteList = ['/login']
 
 router.beforeEach(async(to, from, next) => {
     NProgress.start()
-    document.title = '哈哈'
+    document.title = '炫酷的演示平台'
     next()
 })
 

@@ -14,10 +14,10 @@ export default {
     // 菜单栏
     navMenu: {
         collapse: false,
-        logo: true
+        logo: false
     },
 
-    headerTabs: true,
+    headerTabs: false,
 
     // 是否全屏
     isFullscreen: false,

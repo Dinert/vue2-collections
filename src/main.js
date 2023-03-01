@@ -8,6 +8,8 @@ import './permission'
 import '@/assets/scss/normal.scss'
 import '@/assets/scss/element.scss'
 import '@/assets/scss/common/index.scss'
+import 'leaflet/dist/leaflet.css'
+
 
 // icon
 import './assets/icons'
