@@ -1,0 +1,22 @@
+@import "./navMenu.scss";
+
+$--color-primary: #1890ff;
+$--color-white: #fff;
+$--color-black: #000;
+
+// nprogress
+#nprogress .bar {
+    background-color: $--color-primary;
+    box-shadow: 0 0 10px $--color-primary, 0 0 5px $--color-primary;
+}
+
+// 动画
+$--animate-default: all .28s cubic-bezier(.645, .045, .355, 1);
+
+// 头部
+$--box-shaodw-header: 0 1px 4px rgb(0 21 41 / .08);
+$--color-icon: #5a5e66;
+
+:export {
+    theme-primary: $--color-primary;
+}

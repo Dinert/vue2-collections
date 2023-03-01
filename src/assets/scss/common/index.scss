@@ -1,0 +1,39 @@
+@import "./navMenu.scss";
+
+html,
+body,
+#app {
+    height: 100%;
+}
+
+ul,
+ul li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* 滚动条样式 */
+
+.text-dot {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(255 255 255 / .1);
+    box-shadow: inset 0 0 5px rgb(255 255 255 / .1);
+}
+
+.scroll::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgb(255 255 255 / .1);
+    box-shadow: inset 0 0 5px rgb(255 255 255 / .1);
+}
