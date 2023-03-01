@@ -33,13 +33,12 @@ const routes = [
     },
     {
         path: '/leaflet',
-        redirect: '/leaflet/windy',
+        redirect: '/leaflet/mapstyle',
         component: Layout,
         children: [
             {
-                path: 'windy',
-                component: () => import('@/views/Leaflet/Windy.vue'),
-                name: 'Windy'
+                path: 'mapstyle',
+                component: () => import('@/views/Leaflet/mapStyle.vue'),
             }
         ]
     },
