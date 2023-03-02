@@ -38,12 +38,20 @@ export default {
                     "id":10001,
                     "subMenuItems":[
                         {
-                            "appName":"地图风格图层",
-                            "caption":"地图风格图层",
+                            "appName":"地图风格",
+                            "caption":"地图风格",
                             icon: 'el-icon-wind-power',
-                            "id":10001,
+                            "id":10003,
                             "subMenuItems":[],
                             "url":"/leaflet/mapstyle"
+                        },
+                        {
+                            "appName":"风场",
+                            "caption":"风场",
+                            icon: 'el-icon-wind-power',
+                            "id":10002,
+                            "subMenuItems":[],
+                            "url":"/leaflet/windy"
                         }
                     ],
                     "url":"/leaflet"

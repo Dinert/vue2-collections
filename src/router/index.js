@@ -38,7 +38,11 @@ const routes = [
         children: [
             {
                 path: 'mapstyle',
-                component: () => import('@/views/Leaflet/mapStyle.vue'),
+                component: () => import('@/views/Leaflet/MapStyle.vue'),
+            },
+            {
+                path: 'windy',
+                component: () => import('@/views/Leaflet/Windy.vue'),
             }
         ]
     },
