@@ -34,13 +34,13 @@ export default {
                 {
                     "appName":"leaflet地图",
                     "caption":"leaflet地图",
-                    icon: 'el-icon-ice-cream-square',
+                    icon: 'leaflet',
                     "id":10001,
                     "subMenuItems":[
                         {
                             "appName":"地图风格",
                             "caption":"地图风格",
-                            icon: 'el-icon-wind-power',
+                            icon: 'style',
                             "id":10003,
                             "subMenuItems":[],
                             "url":"/leaflet/mapstyle"
@@ -48,7 +48,7 @@ export default {
                         {
                             "appName":"风场",
                             "caption":"风场",
-                            icon: 'el-icon-wind-power',
+                            icon: 'wind',
                             "id":10002,
                             "subMenuItems":[],
                             "url":"/leaflet/windy"
@@ -56,7 +56,7 @@ export default {
                         {
                             "appName":"渲染",
                             "caption":"渲染",
-                            icon: 'el-icon-wind-power',
+                            icon: 'render',
                             "id":10004,
                             "subMenuItems":[],
                             "url":"/leaflet/render"

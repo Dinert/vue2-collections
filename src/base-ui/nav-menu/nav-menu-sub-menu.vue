@@ -7,7 +7,7 @@
             :index="subMenuItems.url"
         >
             <template slot="title">
-                <i :class="'el-icon ' + subMenuItems.icon"></i>
+                <svg-icon :icon-class="subMenuItems.icon"/>
                 <span class="el-menu-item-name">{{ subMenuItems.caption }}</span>
 
             </template>
@@ -22,7 +22,7 @@
                     :index="child.url"
                     @click="menuItemClick(child)"
                 >
-                    <i :class="'el-icon ' + child.icon"></i>
+                    <svg-icon :icon-class="child.icon"/>
 
                     <span class="el-menu-item-name">{{ child.caption }}</span>
 
@@ -35,8 +35,7 @@
                 :disabled="!getNavMenuCollapse"
             >
                 <el-menu-item :index="subMenuItems.url" @click="menuItemClick(subMenuItems)">
-                    <i :class="'el-icon ' + subMenuItems.icon"></i>
-
+                    <svg-icon :icon-class="subMenuItems.icon"/>
                     <span class="el-menu-item-name">{{ subMenuItems.caption }}</span>
                 </el-menu-item>
             </el-tooltip>
@@ -76,5 +75,11 @@ export default {
 .ali-icon {
     margin-right: 6px;
     font-size: 16px;
+}
+
+.svg-icon {
+    margin-right: 6px;
+    font-size: 16px;
+    vertical-align: -.25em;
 }
 </style>

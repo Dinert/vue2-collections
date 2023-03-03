@@ -2,10 +2,16 @@
     <section class="windy">
         <div id="windy"></div>
         <div class="windy-search">
+            <el-select v-model="airParams" @change="changeParams">
+                <el-option v-for="item in params" :key="item.value"
+                    :label="item.label" :value="item.value"
+                />
+            </el-select>
+
             <el-select v-model="areaName" placeholder="请选择渲染的区域"
                 @change="changeArea"
             >
-                <el-option v-for="item in areaList" :key="item.name"
+                <el-option v-for="item in areaList" :key="item.value"
                     :label="item.label" :value="item.value"
                 />
             </el-select>
@@ -40,6 +46,7 @@ export default {
     },
     data() {
         return {
+            airParams: 'AQI',
             areaList: [
                 {
                     label: '中国',
@@ -62,13 +69,55 @@ export default {
 
                 }
             },
+            params: [
+                {
+                    value: 'AQI',
+                    label: 'AQI'
+                },
+                {
+                    value: 'O3',
+                    label: 'O3'
+                },
+                {
+                    value: 'PM2.5',
+                    label: 'PM2.5'
+                },
+                {
+                    value: 'CO',
+                    label: 'CO'
+                },
+                {
+                    value: 'PM10',
+                    label: 'PM10'
+                },
+                {
+                    value: 'SO2',
+                    label: 'SO2'
+                },
+                {
+                    value: 'NO2',
+                    label: 'NO2'
+                },
+                {
+                    value: 'cwt',
+                    label: 'cwt'
+                },
+                {
+                    value: 'pscf',
+                    label: 'pscf'
+                },
+                {
+                    value: 'wind',
+                    label: 'wind'
+                }
+            ],
             windy: null
         }
     },
     methods: {
         initWindy(data) {
             this.windy = L.tileLayer.windy({
-                type: "AQI",
+                type: this.airParams,
                 overlayData: renderJson,
                 verlayOutLineData: data || ZHJSON.data,
                 map: this.leafletMap.map,
@@ -103,6 +152,11 @@ export default {
             this.overlayFlag = true
             this.windy.overlayFlag = this.overlayFlag
             await this.windy.openOverlay()
+        },
+
+        changeParams(value) {
+            this.windy.type = value
+            this.changeArea(this.areaName)
         }
     },
 
@@ -128,7 +182,7 @@ export default {
         right: 0;
         left: 0;
         margin: 0 auto;
-        width: 300px;
+        width: 600px;
 
         .el-select {
             &::v-deep {
