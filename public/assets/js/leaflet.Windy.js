@@ -30,14 +30,22 @@ L.TileLayer.Windy = L.TileLayer.extend({
         this.resize();
         return this;
     },
+
+    getDom(name) {
+        return document.querySelector(name)
+    },
+
     changeSize: function () { // 重置canvas的宽高
         var _this = this;
         this.width = this.map.getSize().x;
         this.height = this.map.getSize().y;
-        $("#" + this.windId + ", #" + this.overlayId).attr({
-            width: _this.width,
-            height: _this.height
-        });
+
+        this.getDom('#' + this.windId).setAttribute('width', _this.width)
+        this.getDom('#' + this.windId).setAttribute('height', _this.height)
+
+        this.getDom('#' + this.overlayId).setAttribute('width', _this.width)
+        this.getDom('#' + this.overlayId).setAttribute('height', _this.height)
+
         _this.setTranslate();
     },
 
@@ -46,12 +54,21 @@ L.TileLayer.Windy = L.TileLayer.extend({
     },
 
     createDom: function () { // 创建容器
-        this.windCanvas = d3.select(".leaflet-overlay-pane").append("canvas").attr("id", this.windId);
-        this.overlayCanvas = d3.select(".leaflet-overlay-pane").append("canvas").attr("id", this.overlayId);
+        const windCanvas = document.createElement('canvas')
+        windCanvas.setAttribute('id', this.windId)
+        this.getDom('#' + this.map._container.id + " .leaflet-overlay-pane").append(windCanvas)
+        this.windCanvas = windCanvas;
+
+        const overlayCanvas = document.createElement('canvas')
+        overlayCanvas.setAttribute('id', this.overlayId)
+        this.getDom('#' + this.map._container.id + " .leaflet-overlay-pane").append(overlayCanvas)
+        this.overlayCanvas = overlayCanvas;
+
+
     },
 
     clearOverlay: function () {
-        var ctx1 = $("#" + this.overlayId)[0].getContext("2d");
+        var ctx1 = this.getDom('#' + this.overlayId).getContext("2d");
         ctx1.clearRect(0, 0, this.width, this.height);
     },
 
@@ -78,11 +95,11 @@ L.TileLayer.Windy = L.TileLayer.extend({
     },
     clearWind: function () {
         this.windy.stop();
-        var ctx = $("#" + this.windId)[0].getContext("2d");
+        var ctx = this.getDom("#" + this.windId).getContext("2d");
         ctx.clearRect(0, 0, this.width, this.height);
     },
     setTranslate: function () { // 获取transform的3D值
-        var d3Value = $(".leaflet-map-pane")[0].style.transform;
+        var d3Value = this.getDom('#' + this.map._container.id + ' .leaflet-map-pane').style.transform;
         var reg = /(?<=\().+?(?=\))/g; // 取出括号里的值
         var str = d3Value.match(reg)[0].split(",");
         var newValue = "";
@@ -94,15 +111,16 @@ L.TileLayer.Windy = L.TileLayer.extend({
             newValue += (-parseInt(str[i])) + "px" + temp
         }
         newValue = "translate3d(" + newValue + ")";
-        $("#" + this.windId + ", #" + this.overlayId).css("transform", newValue);
+        this.getDom('#' + this.windId).style.transform = newValue
+        this.getDom('#' + this.overlayId).style.transform = newValue
     },
     initWidy: function () { // 初始化风场和渲染
         var _this = this;
         _this.windy = new Windy({
             windyOutLineData: _this.windyOutLineData,
             verlayOutLineData: _this.verlayOutLineData,
-            windCanvas: this.windCanvas.node(),
-            overlayCanvas: this.overlayCanvas.node(),
+            windCanvas: this.windCanvas,
+            overlayCanvas: this.overlayCanvas,
             map: _this.map,
             overlayId: _this.overlayId,
             windId: _this.windId,

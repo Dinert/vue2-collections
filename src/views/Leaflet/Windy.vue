@@ -38,7 +38,6 @@ export default {
         await this.initWindy()
 
     },
-
     data() {
         return {
             areaList: [
