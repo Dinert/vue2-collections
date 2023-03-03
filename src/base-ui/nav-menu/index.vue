@@ -52,6 +52,14 @@ export default {
                             "id":10002,
                             "subMenuItems":[],
                             "url":"/leaflet/windy"
+                        },
+                        {
+                            "appName":"渲染",
+                            "caption":"渲染",
+                            icon: 'el-icon-wind-power',
+                            "id":10004,
+                            "subMenuItems":[],
+                            "url":"/leaflet/render"
                         }
                     ],
                     "url":"/leaflet"

@@ -1507,6 +1507,14 @@ var TRANSPARENT_BLACK = [255, 0, 0, 0];
             }
         }
     },
+    {
+        key: 'changeVerlayOutLineData',
+        value: function ChangeVerlayOutLineData(data) {
+            if(data && data.length) {
+                this._verlayOutLineData = data
+            }
+        }
+    },
         {
             // startColor：开始颜色hex
             // endColor：结束颜色hex

@@ -151,7 +151,7 @@ L.TileLayer.Windy = L.TileLayer.extend({
     },
 
     setWind: function () { // 风场的数据
-        if (this.windData.length) {
+        if (this.windData && this.windData.length) {
             this.windy.setData(this.windData);
         }
     },

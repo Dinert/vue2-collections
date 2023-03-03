@@ -43,6 +43,10 @@ const routes = [
             {
                 path: 'windy',
                 component: () => import('@/views/Leaflet/Windy.vue'),
+            },
+            {
+                path: 'render',
+                component: () => import('@/views/Leaflet/Render.vue'),
             }
         ]
     },
