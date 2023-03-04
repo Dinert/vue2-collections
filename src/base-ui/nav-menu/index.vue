@@ -68,6 +68,14 @@ export default {
                             "id":10005,
                             "subMenuItems":[],
                             "url":"/leaflet/region"
+                        },
+                        {
+                            "appName":"路线",
+                            "caption":"路线",
+                            icon: 'line',
+                            "id":10007,
+                            "subMenuItems":[],
+                            "url":"/leaflet/line"
                         }
                     ],
                     "url":"/leaflet"

@@ -2,7 +2,7 @@ import L from 'leaflet'
 import setView from './setView'
 import _ from 'lodash'
 
-const createOutLine = function(map, options, callback) {
+const createOutLine = function(map, options) {
     const defaultOptions = {
         path: [],
         type: 'Polygon',
@@ -35,7 +35,6 @@ const createOutLine = function(map, options, callback) {
             maxGeo: maxGeo
         });
         map.addLayer(layerGeos);
-        typeof callback === 'function' && callback.call(layerGeos);
         newOptions.setView && setView(map, maxGeo.getBounds(), { animate: true });
         resolve(layerGeos);
     });

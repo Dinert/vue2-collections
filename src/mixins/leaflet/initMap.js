@@ -1,4 +1,5 @@
 import initMap from '@/base-ui/leaflet/initMap'
+import setView from '@/base-ui/leaflet/setView'
 
 export default {
     data() {
@@ -8,6 +9,7 @@ export default {
         }
     },
     methods: {
+        setView,
         async initMap() {
 
             await this.$nextTick()
