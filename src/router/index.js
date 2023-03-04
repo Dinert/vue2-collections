@@ -47,6 +47,10 @@ const routes = [
             {
                 path: 'render',
                 component: () => import('@/views/Leaflet/Render.vue'),
+            },
+            {
+                path: 'region',
+                component: () => import('@/views/Leaflet/Region.vue'),
             }
         ]
     },

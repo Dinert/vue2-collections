@@ -60,6 +60,14 @@ export default {
                             "id":10004,
                             "subMenuItems":[],
                             "url":"/leaflet/render"
+                        },
+                        {
+                            "appName":"区域",
+                            "caption":"区域",
+                            icon: 'area',
+                            "id":10005,
+                            "subMenuItems":[],
+                            "url":"/leaflet/region"
                         }
                     ],
                     "url":"/leaflet"

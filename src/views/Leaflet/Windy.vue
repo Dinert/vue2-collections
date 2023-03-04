@@ -17,8 +17,9 @@
 
 <script>
 
+import L from 'leaflet'
 import leafletMixins from '@/mixins/leaflet/initMap'
-import addControlMixins from '@/mixins/leaflet/addControl'
+import createControlMixins from '@/mixins/leaflet/createControl'
 
 import '/public/assets/js/leaflet.Windy.js'
 
@@ -29,10 +30,10 @@ const windJson =  require('@/assets/json/wind.json')
 
 export default {
     name: 'Windy',
-    mixins: [leafletMixins, addControlMixins],
+    mixins: [leafletMixins, createControlMixins],
     async created() {
         await this.initMap()
-        await this.addControl({
+        await this.createControl({
             layerName: '智图-默认图层-暗蓝色'
         })
         await this.initWindy()
@@ -40,6 +41,7 @@ export default {
     },
     data() {
         return {
+            leafletId: 'windy',
             areaList: [
                 {
                     label: '中国',
@@ -56,12 +58,6 @@ export default {
             ],
             areaName: '中国',
             windyFlag: true,
-            leafletMap: {
-                id: 'windy',
-                options: {
-
-                }
-            },
             windy: null
         }
     },
@@ -70,7 +66,7 @@ export default {
             this.windy = L.tileLayer.windy({
                 windData: windJson,
                 windyOutLineData: data || ZHJSON.data,
-                map: this.leafletMap.map,
+                map: this.leafletMap,
                 windyFlag: this.windyFlag,
                 windId: 'wind',   // 这是唯一的
             }).init();

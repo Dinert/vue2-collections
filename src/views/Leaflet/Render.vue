@@ -22,9 +22,10 @@
 </template>
 
 <script>
+import L from 'leaflet'
 
 import leafletMixins from '@/mixins/leaflet/initMap'
-import addControlMixins from '@/mixins/leaflet/addControl'
+import createControlMixins from '@/mixins/leaflet/createControl'
 
 import '/public/assets/js/leaflet.Windy.js'
 
@@ -35,10 +36,10 @@ const renderJson =  require('@/assets/json/render.json')
 
 export default {
     name: 'Render',
-    mixins: [leafletMixins, addControlMixins],
+    mixins: [leafletMixins, createControlMixins],
     async created() {
         await this.initMap()
-        await this.addControl({
+        await this.createControl({
             layerName: '智图-默认图层-暗蓝色'
         })
         await this.initWindy()
@@ -63,12 +64,8 @@ export default {
             ],
             areaName: '中国',
             overlayFlag: true,
-            leafletMap: {
-                id: 'windy',
-                options: {
+            leafletId: 'windy',
 
-                }
-            },
             params: [
                 {
                     value: 'AQI',
@@ -120,7 +117,7 @@ export default {
                 type: this.airParams,
                 overlayData: renderJson,
                 verlayOutLineData: data || ZHJSON.data,
-                map: this.leafletMap.map,
+                map: this.leafletMap,
                 overlayFlag: this.overlayFlag,
             }).init();
         },

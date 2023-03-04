@@ -7,13 +7,14 @@
 
 
 import initMapMixins from '@/mixins/leaflet/initMap'
-import addControlMixins from '@/mixins/leaflet/addControl'
+import createControlMixins from '@/mixins/leaflet/createControl'
+
 export default {
     name: 'Windy',
-    mixins: [initMapMixins, addControlMixins],
+    mixins: [initMapMixins, createControlMixins],
     async created() {
         await this.initMap()
-        this.addControl()
+        this.createControl()
     },
     data() {
         return {
