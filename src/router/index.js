@@ -49,6 +49,10 @@ const routes = [
                 component: () => import('@/views/Leaflet/Render.vue'),
             },
             {
+                path: 'renderImage',
+                component: () => import('@/views/Leaflet/RenderImage.vue'),
+            },
+            {
                 path: 'region',
                 component: () => import('@/views/Leaflet/Region.vue'),
             },

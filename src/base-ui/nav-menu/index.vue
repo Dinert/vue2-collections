@@ -62,6 +62,14 @@ export default {
                             "url":"/leaflet/render"
                         },
                         {
+                            "appName":"图片渲染",
+                            "caption":"图片渲染",
+                            icon: 'render',
+                            "id":10008,
+                            "subMenuItems":[],
+                            "url":"/leaflet/renderImage"
+                        },
+                        {
                             "appName":"区域",
                             "caption":"区域",
                             icon: 'area',
