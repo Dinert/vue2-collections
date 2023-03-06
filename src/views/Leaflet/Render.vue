@@ -39,9 +39,7 @@ export default {
     mixins: [leafletMixins, createControlMixins],
     async created() {
         await this.initMap()
-        await this.createControl({
-            layerName: '智图-默认图层-暗蓝色'
-        })
+        await this.createControl()
         await this.initWindy()
 
     },
@@ -179,7 +177,7 @@ export default {
         right: 0;
         left: 0;
         margin: 0 auto;
-        width: 600px;
+        text-align: center;
 
         .el-select {
             &::v-deep {

@@ -72,7 +72,7 @@ export default {
         right: 0;
         left: 0;
         margin: 0 auto;
-        width: 300px;
+        text-align: center;
     }
 }
 </style>
