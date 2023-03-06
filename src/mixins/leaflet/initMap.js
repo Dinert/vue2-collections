@@ -9,7 +9,9 @@ export default {
         }
     },
     methods: {
-        setView,
+        setView(latLng, size) {
+            setView(this.leafletMap, latLng, size)
+        },
         async initMap() {
 
             await this.$nextTick()

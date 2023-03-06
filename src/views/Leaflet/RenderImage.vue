@@ -48,7 +48,7 @@ export default {
         },
         reset() {
             if(this.flag) {
-                this.setView(this.leafletMap, this.leafletRenderImage.getBounds())
+                this.setView(this.leafletRenderImage.getBounds())
             }
         }
     }

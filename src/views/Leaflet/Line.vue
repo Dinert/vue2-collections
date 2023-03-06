@@ -46,7 +46,7 @@ export default {
         },
         reset() {
             if(this.flag) {
-                this.setView(this.leafletMap, this.leafletLine.getLayers()[0].getBounds())
+                this.setView(this.leafletLine.getLayers()[0].getBounds())
             }
         }
     }
