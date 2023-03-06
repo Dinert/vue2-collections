@@ -15,20 +15,24 @@
 
 import initMapMixins from '@/mixins/leaflet/initMap'
 import createControlMixins from '@/mixins/leaflet/createControl'
-import createLine from '@/mixins/leaflet/createLine'
 
-const aerialVehiclesJSON =  require('@/assets/json/AerialVehicles.json')
+import '@/base-ui/leaflet/plugins/leaflet.BackTrajectory'
+
+const backTrajectoryJSON =  require('@/assets/json/backTrajectory.json')
 
 export default {
     name: 'Region',
-    mixins: [initMapMixins, createControlMixins, createLine],
+    mixins: [initMapMixins, createControlMixins],
     async created() {
         await this.initMap()
         this.createControl()
 
-        this.createLine({path: aerialVehiclesJSON, setView: true,weight: 6})
+        L.tileLayer.backTrajectory({
+            data: backTrajectoryJSON,
+            lineOptions: {},
+            map: this.leafletMap
+        }).init();
     },
-
     data() {
         return {
             flag: true
