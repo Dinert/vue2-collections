@@ -71,6 +71,10 @@ const routes = [
                 path: 'navigationChart',
                 component: () => import('@/views/GaoDe/NavigationChart.vue'),
             },
+            {
+                path: 'getLnglat',
+                component: () => import('@/views/GaoDe/GetLnglat.vue'),
+            },
         ]
     },
     {

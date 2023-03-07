@@ -2,10 +2,13 @@ import _ from 'lodash'
 import AMapLoader from '@amap/amap-jsapi-loader'
 
 const initMap = (id, options, loadOptions) => {
+    AMapLoader.reset && AMapLoader.reset()
+
     const defaultOptions = {
         zoom:5,           //初始化地图级别
         center:[105.602725,37.076636], //初始化地图中心点位置
     }
+
 
     return new Promise((resolve, reject) => {
 

@@ -98,9 +98,17 @@ export default {
                             "appName":"走航图",
                             "caption":"走航图",
                             icon: 'navigationChart',
-                            "id":10003,
+                            "id":20001,
                             "subMenuItems":[],
                             "url":"/gaode/navigationChart"
+                        },
+                        {
+                            "appName":"下载区域经纬度",
+                            "caption":"下载区域经纬度",
+                            icon: 'download',
+                            "id":20002,
+                            "subMenuItems":[],
+                            "url":"/gaode/getLnglat"
                         }
                     ],
                     "url":"/gaode"

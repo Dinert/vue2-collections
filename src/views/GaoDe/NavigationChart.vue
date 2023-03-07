@@ -70,6 +70,20 @@ export default {
     },
     methods: {
 
+        reset() {
+            this.flagCylinder= true
+            this.flagMesh= true
+            this.flagPoint= true
+            this.flagLine= true
+
+            this.gaodeMap.setPitch(60);
+            this.gaodeCylinder.setFitView()
+            this.gaodeCylinder.show()
+            this.gaodeMesh.show()
+            this.gaodePoint.show()
+            this.gaodeCanvasLine.show()
+        },
+
         cylinderClick() {
             if(this.flagCylinder) {
                 this.gaodeCylinder.hide()
