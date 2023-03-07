@@ -84,14 +84,6 @@ export default {
                             "id":10007,
                             "subMenuItems":[],
                             "url":"/leaflet/line"
-                        },
-                        {
-                            "appName":"轨迹",
-                            "caption":"轨迹",
-                            icon: 'trajectory',
-                            "id":10009,
-                            "subMenuItems":[],
-                            "url":"/leaflet/trajectory"
                         }
                     ],
                     "url":"/leaflet"

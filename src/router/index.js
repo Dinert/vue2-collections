@@ -59,10 +59,6 @@ const routes = [
             {
                 path: 'line',
                 component: () => import('@/views/Leaflet/Line.vue'),
-            },
-            {
-                path: 'trajectory',
-                component: () => import('@/views/Leaflet/Trajectory.vue'),
             }
         ]
     },

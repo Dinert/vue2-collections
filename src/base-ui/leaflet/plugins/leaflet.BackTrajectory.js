@@ -8,6 +8,7 @@ L.TileLayer.BackTrajectory = L.TileLayer.extend({
     init: function () {
         this.data = this._url.data;
         this.map = this._url.map
+        this.mapv = this._url.mapv
 
         this.lineData = []; // 线数据
         this.animatePointData = []; // 动画点数据
@@ -112,16 +113,14 @@ L.TileLayer.BackTrajectory = L.TileLayer.extend({
         this.lineOptions = {
             shadowBluer: 3,
             lineWidth: 3.0,
-            draw: 'category',
+            draw: 'simple',
             splitList: this.heightColor
         }
 
-        var data = new mapv.DataSet(this.lineData);
+        var data = new this.mapv.DataSet(this.lineData);
 
-        this.line = L.supermap.mapVLayer(data, this.lineOptions, {
-            attributionPrefix: "aaa",
-            attribution: "ccc",
-        })
+        this.line = L.supermap.mapVLayer(data, this.lineOptions)
+        console.log(this.line, 'line')
         this.map.addLayer(this.line)
     },
     drawAnimatePoint: function () { // 绘制动画点
@@ -140,14 +139,15 @@ L.TileLayer.BackTrajectory = L.TileLayer.extend({
             splitList: this.heightColor
         }
 
-        var data = new mapv.DataSet(this.animatePointData);
-        this.animatePoint = mapv.addLayer(L.supermap.mapVLayer(data, this.animatePointOptions));
+        var data = new this.mapv.DataSet(this.animatePointData);
+        // let pointLayer = L.supermap.mapVLayer(data, this.animatePointOptions)
+        // this.animatePoint = this.map.addLayer(pointLayer);
 
     },
     drawPoint: function () { // 绘制起点和终点
 
         this.pointLayer = L.layerGroup([...this.startPointLayer, ...this.endPointLayer]);
-        mapv.addLayer(this.pointLayer);
+        // mapv.addLayer(this.pointLayer);
 
     },
     hide: function () {
