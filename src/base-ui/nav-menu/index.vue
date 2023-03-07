@@ -87,6 +87,23 @@ export default {
                         }
                     ],
                     "url":"/leaflet"
+                },
+                {
+                    "appName":"高德地图",
+                    "caption":"高德地图",
+                    icon: 'gaode',
+                    "id":20001,
+                    subMenuItems: [
+                        {
+                            "appName":"走航图",
+                            "caption":"走航图",
+                            icon: 'navigationChart',
+                            "id":10003,
+                            "subMenuItems":[],
+                            "url":"/gaode/navigationChart"
+                        }
+                    ],
+                    "url":"/gaode"
                 }
             ]
             const filterId = [] // 过滤个人中心

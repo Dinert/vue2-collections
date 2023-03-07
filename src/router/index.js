@@ -63,6 +63,17 @@ const routes = [
         ]
     },
     {
+        path: '/gaode',
+        component: Layout,
+        redirect: '/gaode/navigationChart',
+        children: [
+            {
+                path: 'navigationChart',
+                component: () => import('@/views/GaoDe/NavigationChart.vue'),
+            },
+        ]
+    },
+    {
         path: '/login',
         component: () => import('@/views/Login')
     },
