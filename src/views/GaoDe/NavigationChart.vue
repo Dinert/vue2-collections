@@ -142,6 +142,7 @@ export default {
         &::v-deep {
             .cylinderInfo {
                 padding: 4px;
+                width: 200px;
                 border: 1px solid #e5e5e5;
                 border-radius: 4px;
                 background-color: rgb(255 255 255 / .8);
