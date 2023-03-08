@@ -174,10 +174,9 @@ export default {
     &-search {
         position: absolute;
         top: 30px;
-        right: 0;
-        left: 0;
-        margin: 0 auto;
+        left: 50%;
         text-align: center;
+        transform: translate(-50%);
 
         .el-select {
             &::v-deep {
