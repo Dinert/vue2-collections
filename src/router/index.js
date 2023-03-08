@@ -82,6 +82,17 @@ const routes = [
         ]
     },
     {
+        path: '/echarts',
+        component: Layout,
+        redirect: '/echarts/backTrajectory',
+        children: [
+            {
+                path: 'backTrajectory',
+                component: () => import('@/views/ECharts/BackTrajectory.vue'),
+            },
+        ]
+    },
+    {
         path: '/login',
         component: () => import('@/views/Login')
     },

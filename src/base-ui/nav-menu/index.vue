@@ -120,6 +120,23 @@ export default {
                         }
                     ],
                     "url":"/gaode"
+                },
+                {
+                    'appName': 'Echarts',
+                    'caption': 'Echarts',
+                    icon: 'echarts',
+                    id: 30001,
+                    subMenuItems: [
+                        {
+                            "appName":"后向轨迹",
+                            "caption":"后向轨迹",
+                            icon: 'backTrajectory',
+                            "id":30002,
+                            "subMenuItems":[],
+                            "url":"/echarts/backTrajectory"
+                        },
+                    ],
+                    url: 'echarts'
                 }
             ]
             const filterId = [] // 过滤个人中心
