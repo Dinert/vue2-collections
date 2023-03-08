@@ -9,7 +9,7 @@
 import BackWardTrack from '@/base-ui/echarts/backTrajectory'
 import {loadBMap} from '@/base-ui/echarts/loadBMap'
 const backTrajectoryJSON =  require('@/assets/json/backTrajectory.json')
-import {resize} from '@/utils/tools'
+import _ from 'lodash'
 
 
 export default {
@@ -24,7 +24,7 @@ export default {
             }).init();
         })
 
-        resize(this.resize, 100)
+        window.addEventListener('resize', this.resize, false)
 
     },
     data() {
@@ -36,13 +36,12 @@ export default {
 
     },
     methods: {
-        resize() {
+        resize: _.debounce(function () {
             this.backWardTrack && this.backWardTrack.chart && this.backWardTrack.chart.isDisposed &&  this.backWardTrack.chart.resize();
-        }
+        }, 100)
     },
     beforeDestroy() {
-        this.backWardTrack.chart.dispose()
-        this.backWardTrack.chart = null
+        window.removeEventListener('resize', this.resize, false)
     }
 
 }
