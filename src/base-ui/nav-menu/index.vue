@@ -109,6 +109,14 @@ export default {
                             "id":20002,
                             "subMenuItems":[],
                             "url":"/gaode/getLnglat"
+                        },
+                        {
+                            "appName":"区域面",
+                            "caption":"区域面",
+                            icon: 'area',
+                            "id":20003,
+                            "subMenuItems":[],
+                            "url":"/gaode/areaFace"
                         }
                     ],
                     "url":"/gaode"

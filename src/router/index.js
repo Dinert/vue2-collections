@@ -75,6 +75,10 @@ const routes = [
                 path: 'getLnglat',
                 component: () => import('@/views/GaoDe/GetLnglat.vue'),
             },
+            {
+                path: 'areaFace',
+                component: () => import('@/views/GaoDe/AreaFace.vue'),
+            },
         ]
     },
     {
