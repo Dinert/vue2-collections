@@ -19,6 +19,7 @@ import './assets/icons'
 import './plugins/element-ui'
 import './plugins/icon'
 import 'animate.css'
+import './rem'
 
 
 Vue.config.productionTip = false

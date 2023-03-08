@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import * as echarts from 'echarts';
+import * as echarts from 'echarts'
 import "echarts/extension/bmap/bmap"
 
 const BackWardTrack = function (options) {

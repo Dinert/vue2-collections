@@ -90,6 +90,10 @@ const routes = [
                 path: 'backTrajectory',
                 component: () => import('@/views/ECharts/BackTrajectory.vue'),
             },
+            {
+                path: 'barComplexChart',
+                component: () => import('@/views/ECharts/BarComplexChart.vue'),
+            },
         ]
     },
     {

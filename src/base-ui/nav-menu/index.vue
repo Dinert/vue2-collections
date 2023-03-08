@@ -135,6 +135,14 @@ export default {
                             "subMenuItems":[],
                             "url":"/echarts/backTrajectory"
                         },
+                        {
+                            "appName":"复杂条形图表",
+                            "caption":"复杂条形图表",
+                            icon: 'complexChart',
+                            "id":30003,
+                            "subMenuItems":[],
+                            "url":"/echarts/barComplexChart"
+                        },
                     ],
                     url: 'echarts'
                 }
