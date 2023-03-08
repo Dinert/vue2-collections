@@ -19,6 +19,7 @@
                     <input type="radio" name="mapStyle"
                         checked
                         value="normal"
+                        @change="inputClick('normal')"
                     >
                     <span>标准</span>
                     <span class="input-text">normal</span>

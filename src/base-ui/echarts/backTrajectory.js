@@ -37,7 +37,6 @@ BackWardTrack.prototype.init = function () {
 
   this.drawing(); // 绘制
   this.mapsInits(); // 自适应窗口
-  this.resize();
   return this;
 };
 BackWardTrack.prototype.createTitle = function () {
@@ -313,22 +312,5 @@ BackWardTrack.prototype.dataGroup = function () {
   this.options.dataBuffer[this.data[0] && this.data[0].StationId] = result;
 };
 
-BackWardTrack.prototype.resize = function () {
-  console.log(this.chart);
-  var _this = this;
-  if (this.chart && this.chart.isDisposed) {
-    var timer = null;
-    window.onresize = function () {
-        if (!timer) {
-          timer = setTimeout(function () {
-            _this.chart.resize();
-            clearTimeout(timer);
-            timer = null;
-          }, 100);
-        }
-    }
-
-  }
-};
 
 export default BackWardTrack
