@@ -40,7 +40,7 @@ export default {
             this.backWardTrack && this.backWardTrack.chart && this.backWardTrack.chart.isDisposed &&  this.backWardTrack.chart.resize();
         }, 100)
     },
-    beforeDestroy() {
+    destroyed() {
         window.removeEventListener('resize', this.resize, false)
     }
 

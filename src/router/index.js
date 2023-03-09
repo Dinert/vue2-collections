@@ -94,6 +94,10 @@ const routes = [
                 path: 'barComplexChart',
                 component: () => import('@/views/ECharts/BarComplexChart.vue'),
             },
+            {
+                path: 'pieComplexChart',
+                component: () => import('@/views/ECharts/PieComplexChart.vue'),
+            },
         ]
     },
     {

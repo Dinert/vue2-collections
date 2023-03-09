@@ -136,12 +136,20 @@ export default {
                             "url":"/echarts/backTrajectory"
                         },
                         {
-                            "appName":"复杂条形图表",
-                            "caption":"复杂条形图表",
+                            "appName":"复杂条形图图表",
+                            "caption":"复杂条形图图表",
                             icon: 'complexChart',
                             "id":30003,
                             "subMenuItems":[],
                             "url":"/echarts/barComplexChart"
+                        },
+                        {
+                            "appName":"复杂饼图图表",
+                            "caption":"复杂饼图图表",
+                            icon: 'complexChart',
+                            "id":30004,
+                            "subMenuItems":[],
+                            "url":"/echarts/pieComplexChart"
                         },
                     ],
                     url: 'echarts'
