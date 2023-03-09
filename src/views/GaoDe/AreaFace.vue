@@ -88,12 +88,13 @@ export default {
             plugins: ["Map3D", "AMap.DistrictSearch"]
         })
 
+        this.search()
     },
 
     data() {
         return {
             pathData: '',
-            name: '',
+            name: '北京',
             restaurants: [
                 {
                     value: '广东省',
