@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import {DEchart} from '@dinert/echarts'
+import { DEchart } from '@dinert/echarts'
 
 import {barOptions1, barChartData1} from '@/base-ui/echarts/bar/bar1'
 import {barOptions2, barChartData2} from '@/base-ui/echarts/bar/bar2'

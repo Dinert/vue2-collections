@@ -989,10 +989,10 @@
   resolved "http://192.168.1.106:4873/@csstools%2fselector-specificity/-/selector-specificity-2.1.1.tgz#c9c61d9fe5ca5ac664e1153bb0aa0eba1c6d6308"
   integrity sha512-jwx+WCqszn53YHOfvFMJJRd/B2GqkCBt+1MJSG6o5/s8+ytHMvDZXsJgUEWLk12UnLd7HYKac4BYU5i/Ron1Cw==
 
-"@dinert/echarts@^0.1.64":
-  version "0.1.64"
-  resolved "http://192.168.1.106:4873/@dinert%2fecharts/-/echarts-0.1.64.tgz#88e18256e4188e0b6e2409de7b2dbb007384be0a"
-  integrity sha512-FIyupw5JFhO3JvByQFwyXLR85LNLAuinc69ll9i0I7ZoqHacoenLDZO5PtMVRHkYq8auzYr0UbXw9/ay9cvoAA==
+"@dinert/echarts@^0.1.66":
+  version "0.1.66"
+  resolved "http://192.168.1.106:4873/@dinert%2fecharts/-/echarts-0.1.66.tgz#edb77701e204dc274834b57d0629b685bb7b8b6d"
+  integrity sha512-bpQx81k6onZvi1EFv93loM4/wohF6ponh6IzI7bu0eDg1ChL3Z7NV222xSdPO9CUKgghKEkSm3NkIkfuV39QYg==
   dependencies:
     abbrev "^1.1.1"
     acorn "^8.7.1"
