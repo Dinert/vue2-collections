@@ -109,6 +109,10 @@ const routes = [
                 path: 'lidarChart',
                 component: () => import('@/views/Plotly/LidarChart.vue'),
             },
+            {
+                path: 'grain',
+                component: () => import('@/views/Plotly/Grain.vue'),
+            }
         ]
     },
     {

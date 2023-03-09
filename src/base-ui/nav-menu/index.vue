@@ -157,16 +157,23 @@ export default {
                 {
                     "appName":"plotly.js",
                     "caption":"plotly.js",
-                    icon: 'gaode',
+                    icon: 'plotly',
                     "url":"/plotly",
-                    "id":30003,
+                    "id":40003,
                     subMenuItems: [
                         {
                             "appName":"激光雷达图",
                             "caption":"激光雷达图",
-                            "id":30001,
+                            "id":40001,
                             icon: '',
                             "url":"/plotly/lidarChart"
+                        },
+                        {
+                            "appName":"粒径谱图",
+                            "caption":"粒径谱图",
+                            "id":40002,
+                            icon: '',
+                            "url":"/plotly/grain"
                         }
                     ]
                 }
