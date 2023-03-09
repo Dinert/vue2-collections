@@ -40,6 +40,7 @@ export default {
 
         changeSize(item) {
             this.$ELEMENT.size = item
+            console.log(item, 'itemmmmmmmm')
             this.SET_ELEMENTSIZE(item)
             this.refreshView()
         },
@@ -58,11 +59,11 @@ export default {
             }
 
 
-            this.$nextTick(() => {
+            setTimeout(() => {
                 this.$router.replace({
                     path: fullPath
                 })
-            })
+            }, 10)
         }
     }
 }
