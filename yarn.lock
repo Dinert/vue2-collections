@@ -6935,6 +6935,11 @@ pkg-dir@^4.1.0:
   dependencies:
     find-up "^4.0.0"
 
+plotly.js-dist-min@^2.18.2:
+  version "2.18.2"
+  resolved "http://192.168.1.106:4873/plotly.js-dist-min/-/plotly.js-dist-min-2.18.2.tgz#51cc6cb2fdb34f3817a55bd63d6deaf37f858093"
+  integrity sha512-1XPu4ykjDUavENN/guKcMC4XqzTP1712ccEO95sflXnVcRUyruYQYc4XsXi9yF5UwvOHKZMeH0fGK6j/jv89kw==
+
 portfinder@^1.0.26:
   version "1.0.32"
   resolved "http://192.168.1.106:4873/portfinder/-/portfinder-1.0.32.tgz#2fe1b9e58389712429dc2bea5beb2146146c7f81"

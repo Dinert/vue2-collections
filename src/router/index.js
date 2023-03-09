@@ -97,6 +97,17 @@ const routes = [
             {
                 path: 'pieComplexChart',
                 component: () => import('@/views/ECharts/PieComplexChart.vue'),
+            }
+        ]
+    },
+    {
+        path: '/plotly',
+        component: Layout,
+        redirect: '/plotly/lidarChart',
+        children: [
+            {
+                path: 'lidarChart',
+                component: () => import('@/views/Plotly/LidarChart.vue'),
             },
         ]
     },

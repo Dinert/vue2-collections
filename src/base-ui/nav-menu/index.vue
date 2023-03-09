@@ -153,6 +153,22 @@ export default {
                         },
                     ],
                     url: 'echarts'
+                },
+                {
+                    "appName":"plotly.js",
+                    "caption":"plotly.js",
+                    icon: 'gaode',
+                    "url":"/plotly",
+                    "id":30003,
+                    subMenuItems: [
+                        {
+                            "appName":"激光雷达图",
+                            "caption":"激光雷达图",
+                            "id":30001,
+                            icon: '',
+                            "url":"/plotly/lidarChart"
+                        }
+                    ]
                 }
             ]
             const filterId = [] // 过滤个人中心
