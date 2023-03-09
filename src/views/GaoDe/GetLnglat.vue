@@ -12,6 +12,61 @@
             >查询</el-button>
             <el-button type="primary" @click="download">下载</el-button>
         </div>
+
+        <div class="input-card" style="width: 13rem;">
+            <h4>官方默认自定义样式</h4>
+            <div id="map-styles">
+                <div class="input-item">
+                    <input type="radio" name="mapStyle"
+                        checked
+                        value="normal"
+                        @change="inputClick('normal')"
+                    >
+                    <span>标准</span>
+                    <span class="input-text">normal</span>
+                </div>
+                <div class="input-item"><input type="radio" name="mapStyle"
+                    value="dark"
+                    @change="inputClick('dark')"
+                ><span>幻影黑</span><span class="input-text">dark</span></div>
+                <div class="input-item"><input type="radio" name="mapStyle"
+                    value="light"
+                    @change="inputClick('light')"
+                ><span>月光银</span><span class="input-text">light</span></div>
+                <div class="input-item"><input type="radio" name="mapStyle"
+                    value="whitesmoke"
+                    @change="inputClick('whitesmoke')"
+                ><span>远山黛</span><span class="input-text">whitesmoke</span></div>
+                <div class="input-item"><input type="radio" name="mapStyle"
+                    value="fresh"
+                    @change="inputClick('fresh')"
+                ><span>草色青</span><span class="input-text">fresh</span></div>
+                <div class="input-item"><input type="radio" name="mapStyle"
+                    value="grey"
+                    @change="inputClick('grey')"
+                ><span>雅士灰</span><span class="input-text">grey</span></div>
+                <div class="input-item"><input type="radio" name="mapStyle"
+                    value="graffiti"
+                    @change="inputClick('graffiti')"
+                ><span>涂鸦</span><span class="input-text">graffiti</span></div>
+                <div class="input-item"><input type="radio" name="mapStyle"
+                    value="macaron"
+                    @change="inputClick('macaron')"
+                ><span>马卡龙</span><span class="input-text">macaron</span></div>
+                <div class="input-item"><input type="radio" name="mapStyle"
+                    value="blue"
+                    @change="inputClick('blue')"
+                ><span>靛青蓝</span><span class="input-text">blue</span></div>
+                <div class="input-item"><input type="radio" name="mapStyle"
+                    value="darkblue"
+                    @change="inputClick('darkblue')"
+                ><span>极夜蓝</span><span class="input-text">darkblue</span></div>
+                <div class="input-item"><input type="radio" name="mapStyle"
+                    value="wine"
+                    @change="inputClick('wine')"
+                ><span>酱籽</span><span class="input-text">wine</span></div>
+            </div>
+        </div>
     </section>
 </template>
 
@@ -56,6 +111,11 @@ export default {
         }
     },
     methods: {
+        inputClick(value) {
+            var styleName = "amap://styles/" + value;
+            this.gaodeMap.setMapStyle(styleName);
+        },
+
         toggle() {
             if(this.flag) {
                 this.leafletMap.removeLayer(this.leafletLine)
@@ -136,6 +196,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/scss/gaode.scss";
+
 .map {
     width: 100%;
     height: 100%;
