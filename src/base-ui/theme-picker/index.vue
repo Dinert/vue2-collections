@@ -31,7 +31,7 @@ export default {
             this.SET_THEMEPRIMARY(value)
 
             // 修改
-            if(typeof value !== 'string') {return}
+            if (typeof value !== 'string') {}
 
         },
 
@@ -118,7 +118,7 @@ export default {
     watch: {
         async getThemePrimary(val, oldValue) {
 
-            if(typeof val !== 'string') {return}
+            if (typeof val !== 'string') {return}
             const oldVal = oldValue || ORIGINAL_THEME
             const themeCluster = this.getThemeCluster(val.replace('#', ''))
             const originalCluster = this.getThemeCluster(oldVal.replace('#', ''))
@@ -151,8 +151,8 @@ export default {
 
             // 修改主题色
             styles.forEach(style => {
-                const { innerText } = style
-                if (typeof innerText !== 'string') return
+                const {innerText} = style
+                if (typeof innerText !== 'string') {return}
                 style.innerText = this.updateStyle(innerText, originalCluster, themeCluster)
             })
 

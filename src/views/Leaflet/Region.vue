@@ -23,9 +23,9 @@ import initMapMixins from '@/mixins/leaflet/initMap'
 import createControlMixins from '@/mixins/leaflet/createControl'
 import createOutLine from '@/mixins/leaflet/createOutLine'
 
-const ZHJSON =  require('@/assets/json/ZH.json')
-const guangdongshengJSON =  require('@/assets/json/guangdongsheng.json')
-const guangzhoushiJSON =  require('@/assets/json/guangzhoushi.json')
+const ZHJSON = require('@/assets/json/ZH.json')
+const guangdongshengJSON = require('@/assets/json/guangdongsheng.json')
+const guangzhoushiJSON = require('@/assets/json/guangzhoushi.json')
 
 export default {
     name: 'Region',
@@ -60,10 +60,10 @@ export default {
     },
     methods: {
         toggle() {
-            if(this.flag) {
+            if (this.flag) {
                 this.leafletMap.removeLayer(this.leafletOutLine)
                 this.flag = false
-            }else {
+            } else {
                 this.leafletMap.addLayer(this.leafletOutLine)
                 this.flag = true
             }
@@ -73,16 +73,16 @@ export default {
             this.leafletMap.removeLayer(this.leafletOutLine)
             this.leafletOutLine = null
 
-            if(value === '广东') {
+            if (value === '广东') {
                 this.createOutLine({path: guangdongshengJSON.data})
-            }else if(value === '广州') {
+            } else if (value === '广州') {
                 this.createOutLine({path: guangzhoushiJSON.data})
-            }else {
+            } else {
                 this.createOutLine({path: ZHJSON.data})
             }
         }
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>

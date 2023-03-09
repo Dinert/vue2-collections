@@ -29,9 +29,9 @@ export default {
     methods: {
         login() {
             const redirect = this.$route.query.redirect
-            if(redirect) {
+            if (redirect) {
                 this.$router.push({path: redirect})
-            }else {
+            } else {
                 this.$router.push({path: '/home'})
             }
         }

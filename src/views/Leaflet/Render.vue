@@ -29,10 +29,10 @@ import createControlMixins from '@/mixins/leaflet/createControl'
 
 import '/public/assets/js/leaflet.Windy.js'
 
-const ZHJSON =  require('@/assets/json/ZH.json')
-const guangdongshengJSON =  require('@/assets/json/guangdongsheng.json')
-const guangzhoushiJSON =  require('@/assets/json/guangzhoushi.json')
-const renderJson =  require('@/assets/json/render.json')
+const ZHJSON = require('@/assets/json/ZH.json')
+const guangdongshengJSON = require('@/assets/json/guangdongsheng.json')
+const guangzhoushiJSON = require('@/assets/json/guangzhoushi.json')
+const renderJson = require('@/assets/json/render.json')
 
 export default {
     name: 'Render',
@@ -117,15 +117,15 @@ export default {
                 verlayOutLineData: data || ZHJSON.data,
                 map: this.leafletMap,
                 overlayFlag: this.overlayFlag,
-            }).init();
+            }).init()
         },
 
         toggleWind() {
-            if(this.overlayFlag) {
+            if (this.overlayFlag) {
                 this.overlayFlag = false
                 this.windy.overlayFlag = this.overlayFlag
                 this.windy.closeOverlay()
-            }else {
+            } else {
                 this.overlayFlag = true
                 this.windy.overlayFlag = this.overlayFlag
                 this.windy.openOverlay()
@@ -136,11 +136,11 @@ export default {
             this.overlayFlag = false
             this.windy.overlayFlag = this.overlayFlag
             await this.windy.closeOverlay()
-            if(value === '广东') {
+            if (value === '广东') {
                 this.windy.windy.changeVerlayOutLineData(guangdongshengJSON.data)
-            }else if(value === '广州') {
+            } else if (value === '广州') {
                 this.windy.windy.changeVerlayOutLineData(guangzhoushiJSON.data)
-            }else {
+            } else {
                 this.windy.windy.changeVerlayOutLineData(ZHJSON.data)
             }
 

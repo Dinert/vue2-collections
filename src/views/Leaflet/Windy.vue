@@ -23,10 +23,10 @@ import createControlMixins from '@/mixins/leaflet/createControl'
 
 import '/public/assets/js/leaflet.Windy.js'
 
-const ZHJSON =  require('@/assets/json/ZH.json')
-const guangdongshengJSON =  require('@/assets/json/guangdongsheng.json')
-const guangzhoushiJSON =  require('@/assets/json/guangzhoushi.json')
-const windJson =  require('@/assets/json/wind.json')
+const ZHJSON = require('@/assets/json/ZH.json')
+const guangdongshengJSON = require('@/assets/json/guangdongsheng.json')
+const guangzhoushiJSON = require('@/assets/json/guangzhoushi.json')
+const windJson = require('@/assets/json/wind.json')
 
 export default {
     name: 'Windy',
@@ -68,16 +68,16 @@ export default {
                 windyOutLineData: data || ZHJSON.data,
                 map: this.leafletMap,
                 windyFlag: this.windyFlag,
-                windId: 'wind',   // 这是唯一的
-            }).init();
+                windId: 'wind', // 这是唯一的
+            }).init()
         },
 
         toggleWind() {
-            if(this.windyFlag) {
+            if (this.windyFlag) {
                 this.windyFlag = false
                 this.windy.windyFlag = this.windyFlag
                 this.windy.closeWind()
-            }else {
+            } else {
                 this.windyFlag = true
                 this.windy.windyFlag = this.windyFlag
                 this.windy.startWind()
@@ -88,11 +88,11 @@ export default {
             this.windyFlag = false
             this.windy.windyFlag = this.windyFlag
             await this.windy.closeWind()
-            if(value === '广东') {
+            if (value === '广东') {
                 this.windy.windy.changeWindyOutLineData(guangdongshengJSON.data)
-            }else if(value === '广州') {
+            } else if (value === '广州') {
                 this.windy.windy.changeWindyOutLineData(guangzhoushiJSON.data)
-            }else {
+            } else {
                 this.windy.windy.changeWindyOutLineData(ZHJSON.data)
             }
 

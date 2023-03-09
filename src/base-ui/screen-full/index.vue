@@ -21,7 +21,7 @@ export default {
     methods: {
         ...mapMutations(['SET_ISFULLSCREEN']),
         async changeIsFullScreen() {
-            if(!screenfull.isEnabled) {
+            if (!screenfull.isEnabled) {
                 return this.$message({
                     message: '您的浏览器不支持全屏效果',
                     type: 'warning'

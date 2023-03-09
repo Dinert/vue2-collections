@@ -17,7 +17,7 @@ import initMapMixins from '@/mixins/leaflet/initMap'
 import createControlMixins from '@/mixins/leaflet/createControl'
 import createOverlayImage from '@/mixins/leaflet/createOverlayImage'
 
-const AQIImage =  require('@/assets/img/common/AQI.png')
+const AQIImage = require('@/assets/img/common/AQI.png')
 
 export default {
     name: 'Region',
@@ -25,9 +25,9 @@ export default {
     async created() {
         await this.initMap()
         this.createControl()
-        var corner1 = L.latLng(57.363624, 152.59567),
-            corner2 = L.latLng(9.83703, 60.502355),
-            bounds = L.latLngBounds(corner1, corner2);
+        const corner1 = L.latLng(57.363624, 152.59567)
+        const corner2 = L.latLng(9.83703, 60.502355)
+        const bounds = L.latLngBounds(corner1, corner2)
         this.createOverlayImage({path: bounds, url: AQIImage, setView: true})
     },
 
@@ -38,21 +38,21 @@ export default {
     },
     methods: {
         toggle() {
-            if(this.flag) {
+            if (this.flag) {
                 this.leafletMap.removeLayer(this.leafletRenderImage)
                 this.flag = false
-            }else {
+            } else {
                 this.leafletMap.addLayer(this.leafletRenderImage)
                 this.flag = true
             }
         },
         reset() {
-            if(this.flag) {
+            if (this.flag) {
                 this.setView(this.leafletRenderImage.getBounds())
             }
         }
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>

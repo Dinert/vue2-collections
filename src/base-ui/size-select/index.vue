@@ -19,16 +19,16 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import {mapGetters, mapMutations} from 'vuex'
 export default {
     name: 'size-select',
     data() {
         return {
             sizeOptions: [
-                { label: 'Default', value: 'default' },
-                { label: 'Medium', value: 'medium' },
-                { label: 'Small', value: 'small' },
-                { label: 'Mini', value: 'mini' }
+                {label: 'Default', value: 'default'},
+                {label: 'Medium', value: 'medium'},
+                {label: 'Small', value: 'small'},
+                {label: 'Mini', value: 'mini'}
             ]
         }
     },
@@ -46,13 +46,13 @@ export default {
         },
 
         refreshView() {
-            const { fullPath } = this.$route
+            const {fullPath} = this.$route
 
-            if(fullPath === '/404/index') {
+            if (fullPath === '/404/index') {
                 this.$router.replace({
                     path: '/home'
                 })
-            }else {
+            } else {
                 this.$router.replace({
                     path: '/redirect' + fullPath
                 })

@@ -11,14 +11,14 @@ export default {
     name: 'LidarChart',
 
     mounted() {
-        new LaserRadar({
+        this.laserRadar = new LaserRadar({
             data: lidarJson,
             container: '#container'
-        });
+        })
     },
     data() {
         return {
-
+            laserRadar: null
         }
     },
     computed: {

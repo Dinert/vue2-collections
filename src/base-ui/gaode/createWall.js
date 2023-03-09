@@ -12,24 +12,24 @@ const createWall = function (map, options) {
         transparent: true
     }
 
-    return new Promise(function (resolve, reject) {
-        let newOptions = _.defaultsDeep(_.cloneDeep(options), defaultOptions)
+    return new Promise((resolve, reject) => {
+        const newOptions = _.defaultsDeep(_.cloneDeep(options), defaultOptions)
 
-        const object3Dlayer = new AMap.Object3DLayer({ zIndex: newOptions.zIndex });
-        const wall = new AMap.Object3D.Wall(newOptions);
-        wall.transparent = true;
+        const object3Dlayer = new AMap.Object3DLayer({zIndex: newOptions.zIndex})
+        const wall = new AMap.Object3D.Wall(newOptions)
+        wall.transparent = true
 
-        for(let i = 0; i < newOptions.path.length; i ++) {
+        for (let i = 0; i < newOptions.path.length; i++) {
             new AMap.Polyline({
-                path:newOptions.path[i],
-                strokeColor:'#99ffff',
-                strokeWeight:4,
+                path: newOptions.path[i],
+                strokeColor: '#99ffff',
+                strokeWeight: 4,
                 map
             })
         }
 
         object3Dlayer.add(wall)
-        map.add(object3Dlayer);
+        map.add(object3Dlayer)
         newOptions.cityName && map.setCity(newOptions.cityName)
         newOptions.pitch && map.setPitch(newOptions.pitch)
         resolve(object3Dlayer)

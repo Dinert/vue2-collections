@@ -1,20 +1,20 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 import Layout from '@/layout'
-import { Message } from 'element-ui'
+import {Message} from 'element-ui'
 
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 // bugfix:两次访问相同路由地址报错
 const originalPush = VueRouter.prototype.push
-VueRouter.prototype.push = function push (location) {
-  return originalPush.call(this, location).catch(err => err)
+VueRouter.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch(err => err)
 }
 
 const replace = VueRouter.prototype.replace
-VueRouter.prototype.replace = function push (location) {
-  return replace.call(this, location).catch(err => err)
+VueRouter.prototype.replace = function push(location) {
+    return replace.call(this, location).catch(err => err)
 }
 
 const routes = [
@@ -23,12 +23,12 @@ const routes = [
         redirect: '/leaflet',
         component: Layout,
         children: [
-          {
-            path: 'home',
-            component: () => import('@/views/Home'),
-            name: 'Home',
-            meta: { title: '首页' }
-          }
+            {
+                path: 'home',
+                component: () => import('@/views/Home'),
+                name: 'Home',
+                meta: {title: '首页'}
+            }
         ]
     },
     {
@@ -138,14 +138,13 @@ const routes = [
         path: '*',
         redirect: '/404',
     }
-];
+]
 
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes
-});
-
+})
 
 
 router.onError(err => {
@@ -164,4 +163,4 @@ router.onError(err => {
 })
 
 
-export default router;
+export default router

@@ -77,7 +77,7 @@ import initMapMixins from '@/mixins/gaode/initMap'
 import districtSearch from '@/base-ui/gaode/districtSearch'
 import createOutLineMixins from '@/mixins/gaode/createOutLine'
 
-import { saveAs } from 'file-saver';
+import {saveAs} from 'file-saver'
 
 export default {
     name: 'Region',
@@ -112,25 +112,25 @@ export default {
     },
     methods: {
         inputClick(value) {
-            var styleName = "amap://styles/" + value;
-            this.gaodeMap.setMapStyle(styleName);
+            const styleName = 'amap://styles/' + value
+            this.gaodeMap.setMapStyle(styleName)
         },
 
         toggle() {
-            if(this.flag) {
+            if (this.flag) {
                 this.leafletMap.removeLayer(this.leafletLine)
                 this.flag = false
-            }else {
+            } else {
                 this.leafletMap.addLayer(this.leafletLine)
                 this.flag = true
             }
         },
 
         querySearch(queryString, cb) {
-            let restaurants = this.restaurants;
-            let results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
+            const restaurants = this.restaurants
+            const results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants
 
-            cb(results);
+            cb(results)
         },
 
         isRestaurants(name) {
@@ -140,13 +140,13 @@ export default {
         },
 
         createFilter(queryString) {
-            return (restaurant) => {
-                return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
-            };
+            return restaurant => {
+                return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0)
+            }
         },
 
         search() {
-            if(!this.name) {
+            if (!this.name) {
                 return this.$message({
                     type: 'error',
                     message: '请输入区县级以上的区域名称'
@@ -157,7 +157,7 @@ export default {
                 mask: [this.name]
             }).then(res => {
 
-                if(this.isRestaurants(this.name).length === 0) {
+                if (this.isRestaurants(this.name).length === 0) {
                     this.restaurants.push({
                         value: this.name,
                         address: this.name
@@ -186,13 +186,13 @@ export default {
         download() {
             const name = this.pathData.content.name
             const content = JSON.stringify({name: name, data: this.pathData.mask})
-            const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+            const blob = new Blob([content], {type: 'text/plain;charset=utf-8'})
 
-            saveAs(blob, name + ".json");
+            saveAs(blob, name + '.json')
 
         }
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>

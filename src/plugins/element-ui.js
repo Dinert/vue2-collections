@@ -5,4 +5,3 @@ import elementConfig from '@/store/state'
 Vue.use(ElementUI, elementConfig.element)
 
 
-

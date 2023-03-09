@@ -5,7 +5,7 @@ import _ from 'lodash'
 
 const initMap = (id, options) => {
     const defaultOptions = {
-        layers: [L.tileLayer.chinaProvider("GaoDe.Normal.Map", {
+        layers: [L.tileLayer.chinaProvider('GaoDe.Normal.Map', {
             minZoom: 1,
             maxZoom: 18,
         })],
@@ -15,9 +15,9 @@ const initMap = (id, options) => {
         zoom: 4,
         attributionControl: false
     }
-    let newOptions = _.defaultsDeep(_.cloneDeep(options), defaultOptions)
+    const newOptions = _.defaultsDeep(_.cloneDeep(options), defaultOptions)
     return new Promise((resolve, reject) => {
-        if(!id) {
+        if (!id) {
             reject(new Error('实例化id是必填项'))
         }
         const map = L.map(id, newOptions)

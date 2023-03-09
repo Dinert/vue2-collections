@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import {mapGetters} from 'vuex'
 export default {
     name: 'Home',
     mixins: [],
     mounted() {},
     data() {
-        return {};
+        return {}
     },
     computed: {
         ...mapGetters(['getWindowOffset'])
@@ -19,7 +19,7 @@ export default {
     methods: {
 
     },
-};
+}
 </script>
 
 <style lang="scss" scoped>

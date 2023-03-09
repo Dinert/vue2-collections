@@ -32,23 +32,23 @@ const createControl = (map, options = {layerName: '智图-默认图层'}) => {
         const tempNameObj = {}
         const layersObj = {}
 
-        for(const prop in provides) {
+        for (const prop in provides) {
             const mapLayers = provides[prop]
-            for(const prop2 in mapLayers) {
-                if(['Normal', 'Satellite', 'Terrain'].includes(prop2)) {
-                    for(const prop3 in mapLayers[prop2]) {
+            for (const prop2 in mapLayers) {
+                if (['Normal', 'Satellite', 'Terrain'].includes(prop2)) {
+                    for (const prop3 in mapLayers[prop2]) {
 
-                        if(prop3 !== 'Annotion') {
+                        if (prop3 !== 'Annotion') {
                             tempObj[prop + '.' + prop2 + '.' + prop3] = mapLayers[prop2][prop3]
-                            tempNameObj[prop + '.' + prop2 + '.' + prop3] = mapStyleName[prop3] === '默认' ? mapMapName[prop] + '-' + mapLayersName[prop2] :  mapMapName[prop] + '-' + mapLayersName[prop2] + '-' + mapStyleName[prop3]
+                            tempNameObj[prop + '.' + prop2 + '.' + prop3] = mapStyleName[prop3] === '默认' ? mapMapName[prop] + '-' + mapLayersName[prop2] : mapMapName[prop] + '-' + mapLayersName[prop2] + '-' + mapStyleName[prop3]
                         }
                     }
                 }
             }
         }
 
-        for(const prop in tempObj) {
-            layersObj[tempNameObj[prop]] =  L.tileLayer.chinaProvider(prop, {
+        for (const prop in tempObj) {
+            layersObj[tempNameObj[prop]] = L.tileLayer.chinaProvider(prop, {
                 minZoom: 1,
                 maxZoom: 18,
                 ...options

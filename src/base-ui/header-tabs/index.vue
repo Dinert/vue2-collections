@@ -43,20 +43,20 @@
 
 <script>
 export default {
-    name: "HeaderTabs",
+    name: 'HeaderTabs',
 
     mounted() {
         document.onclick = () => {
-            this.contextVisible = false;
-        };
+            this.contextVisible = false
+        }
     },
     data() {
         return {
             contextVisible: false,
             tabsList: [
                 {
-                    message: "首页",
-                    url: "/home",
+                    message: '首页',
+                    url: '/home',
                     ever: true,
                 },
             ],
@@ -67,112 +67,112 @@ export default {
             },
             currentTab: {},
             currentTabIndex: null,
-        };
+        }
     },
     computed: {
         path() {
-            return this.$route.path;
+            return this.$route.path
         },
     },
     methods: {
         changePath(item) {
             if (item.url !== this.$route.path) {
                 if (this.$route.meta.title) {
-                    this.$router.replace({ path: item.url });
+                    this.$router.replace({path: item.url})
                 } else {
-                    this.$router.replace({ path: "/404" });
+                    this.$router.replace({path: '/404'})
                 }
             }
         },
 
         closeTabs(item, index) {
-            this.tabsList.splice(index, 1);
+            this.tabsList.splice(index, 1)
             if (item.url === this.path) {
-                const prev = this.tabsList[index];
-                const last = this.tabsList[index - 1];
+                const prev = this.tabsList[index]
+                const last = this.tabsList[index - 1]
                 if (prev) {
-                    this.$router.replace({ path: prev.url });
+                    this.$router.replace({path: prev.url})
                 } else if (last) {
-                    this.$router.replace({ path: last.url });
+                    this.$router.replace({path: last.url})
                 } else {
-                    this.$router.replace({ path: "/" });
+                    this.$router.replace({path: '/'})
                 }
             }
         },
 
         // 关闭
         async closed() {
-            this.closeTabs(this.currentTab, this.currentTabIndex);
+            this.closeTabs(this.currentTab, this.currentTabIndex)
         },
 
         // 右键菜单
         openMenu(item, event, index) {
-            this.positions.left = event.x + 10;
-            this.positions.top = event.y + 10;
-            this.currentTab = item;
-            this.contextVisible = true;
-            this.currentTabIndex = index;
+            this.positions.left = event.x + 10
+            this.positions.top = event.y + 10
+            this.currentTab = item
+            this.contextVisible = true
+            this.currentTabIndex = index
         },
 
         // 刷新
         refreshSelectTab() {
             this.$router.replace({
-                path: "/",
-            });
+                path: '/',
+            })
 
             this.$nextTick(() => {
                 this.$router.replace({
                     path: this.currentTab.url,
-                });
-            });
+                })
+            })
         },
 
         // 关闭其它
         closedOther() {
             if (!this.currentTab.ever) {
-                this.tabsList.splice(this.currentTabIndex + 1);
-                this.tabsList.splice(1, this.currentTabIndex - 1);
-            }else {
+                this.tabsList.splice(this.currentTabIndex + 1)
+                this.tabsList.splice(1, this.currentTabIndex - 1)
+            } else {
                 this.tabsList.splice(1)
             }
 
             this.$nextTick(() => {
                 this.$router.replace({
                     path: this.currentTab.url,
-                });
-            });
+                })
+            })
         },
 
         // 关闭所有
         closedAll() {
-            this.tabsList.splice(1);
+            this.tabsList.splice(1)
 
             this.$nextTick(() => {
                 this.$router.replace({
-                    path: "/",
-                });
-            });
+                    path: '/',
+                })
+            })
         },
     },
     watch: {
         path: {
             handler(newValue, oldValue) {
-                const index = this.tabsList.findIndex((item) => item.url === newValue);
+                const index = this.tabsList.findIndex(item => item.url === newValue)
                 if (index === -1) {
                     if (this.$route.meta.title) {
                         this.tabsList.push({
                             url: newValue,
                             message: this.$route.meta.title,
-                        });
+                        })
                     } else {
                         const tempIndex = this.tabsList.findIndex(
-                            (item) => item.url === "/404"
-                        );
+                            item => item.url === '/404'
+                        )
                         if (tempIndex === -1) {
                             this.tabsList.push({
-                                url: "/404",
-                                message: "404",
-                            });
+                                url: '/404',
+                                message: '404',
+                            })
                         }
                     }
                 }
@@ -180,7 +180,7 @@ export default {
             immediate: true,
         },
     },
-};
+}
 </script>
 
 <style lang="scss" scoped>

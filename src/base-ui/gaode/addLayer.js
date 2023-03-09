@@ -1,17 +1,17 @@
 
 const addLayer = function (map, layers) {
-    var name = layers && layers.CLASS_NAME;
+    const name = layers && layers.CLASS_NAME
     if (Object.prototype.toString.call(layers) === '[object Array]') {
-        for (var i = 0; i < layers.length; i++) {
-            map.add(layers[i]);
+        for (let i = 0; i < layers.length; i++) {
+            map.add(layers[i])
             if (name === 'Loca.PointLayer' || name === 'Loca.ScatterPointLayer') {
-                layers[i].render();
+                layers[i].render()
             }
         }
     } else {
-        map.add(layers);
+        map.add(layers)
         if (name === 'Loca.PointLayer' || name === 'Loca.ScatterPointLayer') {
-            layers.render();
+            layers.render()
         }
     }
 }

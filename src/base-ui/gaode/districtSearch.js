@@ -10,62 +10,62 @@ const districtSearch = function (options) { // 查询行政区域多个
         origin: true
     }
 
-    return new Promise(function (resolve, reject) {
-        let newOptions = _.defaultsDeep(_.cloneDeep(options), defaultOptions)
+    return new Promise((resolve, reject) => {
+        const newOptions = _.defaultsDeep(_.cloneDeep(options), defaultOptions)
 
-        var district = new AMap.DistrictSearch(newOptions);
+        const district = new AMap.DistrictSearch(newOptions)
 
         newOptions.mask = typeof newOptions.mask === 'string' ? [newOptions.mask] : newOptions.mask
 
-        var count = 0;
-        var tempArr = [];
-        var tempArr2 = [];
-        var boundsArr = [];
-        var outLineArr = [];
-        for (var i = 0; i < newOptions.mask.length; i++) {
-            var name = newOptions.mask[i];
-            district.search(name, function (status, result) {
-                count++;
+        let count = 0
+        const tempArr = []
+        const tempArr2 = []
+        const boundsArr = []
+        const outLineArr = []
+        for (let i = 0; i < newOptions.mask.length; i++) {
+            const name = newOptions.mask[i]
+            district.search(name, (status, result) => {
+                count++
                 if (status === 'complete') {
-                    var content = result.districtList[0];
-                    var bounds = result.districtList[0].boundaries;
-                    outLineArr.push(bounds);
+                    const content = result.districtList[0]
+                    const bounds = result.districtList[0].boundaries
+                    outLineArr.push(bounds)
                     if (newOptions.origin) {
                         for (var j = 0; j < bounds.length; j++) {
-                            tempArr.push([bounds[j]]);
-                            boundsArr.push(bounds[j]);
+                            tempArr.push([bounds[j]])
+                            boundsArr.push(bounds[j])
                         }
-                        var tempObj = { mask: tempArr, bounds: boundsArr, outLine: outLineArr, content: content }
-                        if(count === newOptions.mask.length) {
+                        var tempObj = {mask: tempArr, bounds: boundsArr, outLine: outLineArr, content: content}
+                        if (count === newOptions.mask.length) {
 
-                            resolve(tempObj);
+                            resolve(tempObj)
 
                         }
                     } else {
 
-                        for (var i = 0; i < bounds.length; i++) {
+                        for (let i = 0; i < bounds.length; i++) {
                             for (var j = 0; j < bounds[i].length; j++) {
                                 tempArr.push([bounds[i][j].lng, bounds[i][j].lat])
                             }
-                            tempArr2.push(tempArr);
-                            boundsArr.push(bounds[i]);
+                            tempArr2.push(tempArr)
+                            boundsArr.push(bounds[i])
                         }
-                        var tempObj = { mask: tempArr, bounds: boundsArr, outLine: outLineArr, content: content }
+                        var tempObj = {mask: tempArr, bounds: boundsArr, outLine: outLineArr, content: content}
 
-                        if(count === options.mask.length) {
-                            resolve(tempObj);
+                        if (count === options.mask.length) {
+                            resolve(tempObj)
                         }
                     }
-                }else {
+                } else {
                     reject({
                         status: 0,
                         msg: '查找失败'
-                    });
+                    })
                 }
-            });
+            })
         }
 
-    });
+    })
 }
 
 export default districtSearch

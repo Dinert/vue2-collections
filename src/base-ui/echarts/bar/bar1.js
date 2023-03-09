@@ -146,59 +146,59 @@ export const barOptions1 = {
 }
 
 export const barChartData1 = {
-    "yAxis": [
-      {
-        "name": "数据量",
-        "type": "value"
-      },
-      {
-        "name": "同比增长率",
-        "type": "value"
-      }
+    'yAxis': [
+        {
+            'name': '数据量',
+            'type': 'value'
+        },
+        {
+            'name': '同比增长率',
+            'type': 'value'
+        }
     ],
-    "xAxis": [
-      {
-        "data": [
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022"
-        ],
-        "type": "category"
-      }
+    'xAxis': [
+        {
+            'data': [
+                '2018',
+                '2019',
+                '2020',
+                '2021',
+                '2022'
+            ],
+            'type': 'category'
+        }
     ],
-    "legend": {
-      "data": [
-        "数据量",
-        "同比增长率"
-      ]
+    'legend': {
+        'data': [
+            '数据量',
+            '同比增长率'
+        ]
     },
-    "series": [
-      {
-        "data": [
-          7386,
-          12919,
-          18882,
-          23089,
-          26751
-        ],
-        "name": "数据量",
-        "type": "bar"
-      },
-      {
-        "data": [
-          0,
-          74.91,
-          46.16,
-          22.28,
-          15.86
-        ],
-        "name": "同比增长率",
-        "type": "line"
-      }
+    'series': [
+        {
+            'data': [
+                7386,
+                12919,
+                18882,
+                23089,
+                26751
+            ],
+            'name': '数据量',
+            'type': 'bar'
+        },
+        {
+            'data': [
+                0,
+                74.91,
+                46.16,
+                22.28,
+                15.86
+            ],
+            'name': '同比增长率',
+            'type': 'line'
+        }
     ],
-    "tooltip": {
-      "trigger": "axis"
+    'tooltip': {
+        'trigger': 'axis'
     }
-  }
+}

@@ -85,7 +85,7 @@ export default {
             viewMode: '3D'
         }, {
             version: '1.4.15',
-            plugins: ["Map3D", "AMap.DistrictSearch"]
+            plugins: ['Map3D', 'AMap.DistrictSearch']
         })
 
         this.search()
@@ -113,15 +113,15 @@ export default {
     },
     methods: {
         inputClick(value) {
-            var styleName = "amap://styles/" + value;
-            this.gaodeMap.setMapStyle(styleName);
+            const styleName = 'amap://styles/' + value
+            this.gaodeMap.setMapStyle(styleName)
         },
 
         querySearch(queryString, cb) {
-            let restaurants = this.restaurants;
-            let results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
+            const restaurants = this.restaurants
+            const results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants
 
-            cb(results);
+            cb(results)
         },
 
         isRestaurants(name) {
@@ -131,13 +131,13 @@ export default {
         },
 
         createFilter(queryString) {
-            return (restaurant) => {
-                return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
-            };
+            return restaurant => {
+                return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0)
+            }
         },
 
         search() {
-            if(!this.name) {
+            if (!this.name) {
                 return this.$message({
                     type: 'error',
                     message: '请输入区县级以上的区域名称'
@@ -148,7 +148,7 @@ export default {
                 mask: [this.name]
             }).then(res => {
 
-                if(this.isRestaurants(this.name).length === 0) {
+                if (this.isRestaurants(this.name).length === 0) {
                     this.restaurants.push({
                         value: this.name,
                         address: this.name
@@ -179,7 +179,7 @@ export default {
         },
 
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -220,61 +220,61 @@ export const barOptions3 = {
 
 
 export const barChartData3 = {
-    "yAxis": [
-      {
-        "name": "数据1",
-        "type": "value"
-      },
-      {
-        "name": "数据2",
-        "type": "value"
-      }
+    'yAxis': [
+        {
+            'name': '数据1',
+            'type': 'value'
+        },
+        {
+            'name': '数据2',
+            'type': 'value'
+        }
     ],
-    "xAxis": [
-      {
-        "data": [
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022"
-        ],
-        "type": "category"
-      }
+    'xAxis': [
+        {
+            'data': [
+                '2018',
+                '2019',
+                '2020',
+                '2021',
+                '2022'
+            ],
+            'type': 'category'
+        }
     ],
-    "legend": {
-      "data": [
-        "数据1",
-        "数据2"
-      ]
+    'legend': {
+        'data': [
+            '数据1',
+            '数据2'
+        ]
     },
-    "series": [
-      {
-        "data": [
-          7876,
-          12011,
-          18814,
-          23042,
-          26244
-        ],
-        "name": "数据1",
-        "type": "bar"
-      },
-      {
-        "data": [
-          0,
-          52.5,
-          56.64,
-          22.47,
-          13.9
-        ],
-        "name": "数据2",
-        "type": "line"
-      }
+    'series': [
+        {
+            'data': [
+                7876,
+                12011,
+                18814,
+                23042,
+                26244
+            ],
+            'name': '数据1',
+            'type': 'bar'
+        },
+        {
+            'data': [
+                0,
+                52.5,
+                56.64,
+                22.47,
+                13.9
+            ],
+            'name': '数据2',
+            'type': 'line'
+        }
     ],
-    "tooltip": {
-      "trigger": "axis"
+    'tooltip': {
+        'trigger': 'axis'
     },
-    "title": {
+    'title': {
     }
-  }
+}

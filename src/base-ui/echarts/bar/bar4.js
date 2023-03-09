@@ -129,7 +129,7 @@ export const barOptions4 = {
         // 原始数据
         const seriesData = options.series[0].data
 
-        options.series[0].barWidth =  rem
+        options.series[0].barWidth = rem
 
         // 百分比数据
         const percentData = []
@@ -193,10 +193,10 @@ export const barOptions4 = {
         options.yAxis[1].data = seriesData
         options.yAxis[1].axisLabel.rich = {
             value: {
-                fontSize:  rem
+                fontSize: rem
             },
             precenter: {
-                fontSize:  rem,
+                fontSize: rem,
                 color: '#fff'
             }
         }
@@ -213,35 +213,35 @@ export const barOptions4 = {
 }
 
 export const barChartData4 = {
-    "xAxis": [
-      {
-        "data": [
-          "数据1",
-          "数据2",
-          "数据3",
-          "数据4",
-          "数据5",
-          "数据6"
-        ],
-        "type": "category"
-      }
+    'xAxis': [
+        {
+            'data': [
+                '数据1',
+                '数据2',
+                '数据3',
+                '数据4',
+                '数据5',
+                '数据6'
+            ],
+            'type': 'category'
+        }
     ],
-    "series": [
-      {
-        "data": [
-          1085,
-          871,
-          729,
-          421,
-          371,
-          207
-        ],
-        "name": "行业",
-        "type": "bar"
-      }
+    'series': [
+        {
+            'data': [
+                1085,
+                871,
+                729,
+                421,
+                371,
+                207
+            ],
+            'name': '行业',
+            'type': 'bar'
+        }
     ],
-    "tooltip": {
-      "show": true,
-      "trigger": "axis"
+    'tooltip': {
+        'show': true,
+        'trigger': 'axis'
     }
-  }
+}

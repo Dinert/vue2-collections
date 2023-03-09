@@ -83,33 +83,33 @@ export default {
         // 获取浏览器的宽高
         this.SET_WINDOWOFFSET(offset)
 
-        if(offset.width < 1024) {
+        if (offset.width < 1024) {
             this.SET_NAVMENUCOLLAPSE(true)
-        }else {
+        } else {
             this.SET_NAVMENUCOLLAPSE(false)
         }
 
-        if(offset.width < 1000) {
+        if (offset.width < 1000) {
             this.SET_WINDOWWIDTH1000(true)
-        }else {
+        } else {
             this.SET_WINDOWWIDTH1000(false)
         }
 
         this.$resize = () => {
-            const offset =this.getWindowOffset()
+            const offset = this.getWindowOffset()
 
             this.SET_WINDOWOFFSET(offset)
 
-            if(offset.width < 1024) {
+            if (offset.width < 1024) {
                 this.SET_NAVMENUCOLLAPSE(true)
                 this.SET_WINDOWWIDTH1024(true)
-            }else {
+            } else {
                 this.SET_WINDOWWIDTH1024(false)
             }
 
-            if(offset.width < 1000) {
+            if (offset.width < 1000) {
                 this.SET_WINDOWWIDTH1000(true)
-            }else {
+            } else {
                 this.SET_WINDOWWIDTH1000(false)
             }
         }

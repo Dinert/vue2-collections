@@ -45,9 +45,9 @@ export default {
         }
     },
     beforeRouteEnter(to, from, next) {
-        next((vm) => {
-            vm.fromPath = from.path;
-        });
+        next(vm => {
+            vm.fromPath = from.path
+        })
     },
     methods: {
         back() {

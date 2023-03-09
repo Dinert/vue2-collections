@@ -17,7 +17,7 @@ import initMapMixins from '@/mixins/leaflet/initMap'
 import createControlMixins from '@/mixins/leaflet/createControl'
 import createLine from '@/mixins/leaflet/createLine'
 
-const aerialVehiclesJSON =  require('@/assets/json/AerialVehicles.json')
+const aerialVehiclesJSON = require('@/assets/json/AerialVehicles.json')
 
 export default {
     name: 'Region',
@@ -26,7 +26,7 @@ export default {
         await this.initMap()
         this.createControl()
 
-        this.createLine({path: aerialVehiclesJSON, setView: true,weight: 6})
+        this.createLine({path: aerialVehiclesJSON, setView: true, weight: 6})
     },
 
     data() {
@@ -36,21 +36,21 @@ export default {
     },
     methods: {
         toggle() {
-            if(this.flag) {
+            if (this.flag) {
                 this.leafletMap.removeLayer(this.leafletLine)
                 this.flag = false
-            }else {
+            } else {
                 this.leafletMap.addLayer(this.leafletLine)
                 this.flag = true
             }
         },
         reset() {
-            if(this.flag) {
+            if (this.flag) {
                 this.setView(this.leafletLine.getLayers()[0].getBounds())
             }
         }
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>

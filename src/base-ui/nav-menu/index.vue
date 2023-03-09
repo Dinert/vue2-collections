@@ -32,94 +32,94 @@ export default {
         menuDatas() {
             let menuData = [
                 {
-                    "appName":"leaflet地图",
-                    "caption":"leaflet地图",
+                    'appName': 'leaflet地图',
+                    'caption': 'leaflet地图',
                     icon: 'leaflet',
-                    "id":10001,
-                    "subMenuItems":[
+                    'id': 10001,
+                    'subMenuItems': [
                         {
-                            "appName":"地图风格",
-                            "caption":"地图风格",
+                            'appName': '地图风格',
+                            'caption': '地图风格',
                             icon: 'style',
-                            "id":10003,
-                            "subMenuItems":[],
-                            "url":"/leaflet/mapstyle"
+                            'id': 10003,
+                            'subMenuItems': [],
+                            'url': '/leaflet/mapstyle'
                         },
                         {
-                            "appName":"风场",
-                            "caption":"风场",
+                            'appName': '风场',
+                            'caption': '风场',
                             icon: 'wind',
-                            "id":10002,
-                            "subMenuItems":[],
-                            "url":"/leaflet/windy"
+                            'id': 10002,
+                            'subMenuItems': [],
+                            'url': '/leaflet/windy'
                         },
                         {
-                            "appName":"渲染",
-                            "caption":"渲染",
+                            'appName': '渲染',
+                            'caption': '渲染',
                             icon: 'render',
-                            "id":10004,
-                            "subMenuItems":[],
-                            "url":"/leaflet/render"
+                            'id': 10004,
+                            'subMenuItems': [],
+                            'url': '/leaflet/render'
                         },
                         {
-                            "appName":"图片渲染",
-                            "caption":"图片渲染",
+                            'appName': '图片渲染',
+                            'caption': '图片渲染',
                             icon: 'render',
-                            "id":10008,
-                            "subMenuItems":[],
-                            "url":"/leaflet/renderImage"
+                            'id': 10008,
+                            'subMenuItems': [],
+                            'url': '/leaflet/renderImage'
                         },
                         {
-                            "appName":"区域",
-                            "caption":"区域",
+                            'appName': '区域',
+                            'caption': '区域',
                             icon: 'area',
-                            "id":10005,
-                            "subMenuItems":[],
-                            "url":"/leaflet/region"
+                            'id': 10005,
+                            'subMenuItems': [],
+                            'url': '/leaflet/region'
                         },
                         {
-                            "appName":"路线",
-                            "caption":"路线",
+                            'appName': '路线',
+                            'caption': '路线',
                             icon: 'line',
-                            "id":10007,
-                            "subMenuItems":[],
-                            "url":"/leaflet/line"
+                            'id': 10007,
+                            'subMenuItems': [],
+                            'url': '/leaflet/line'
                         }
                     ],
-                    "url":"/leaflet"
+                    'url': '/leaflet'
                 },
                 {
-                    "appName":"高德地图",
-                    "caption":"高德地图",
+                    'appName': '高德地图',
+                    'caption': '高德地图',
                     icon: 'gaode',
-                    "id":20001,
+                    'id': 20001,
                     subMenuItems: [
                         {
-                            "appName":"走航图",
-                            "caption":"走航图",
+                            'appName': '走航图',
+                            'caption': '走航图',
                             icon: 'navigationChart',
-                            "id":20001,
-                            "subMenuItems":[],
-                            "url":"/gaode/navigationChart"
+                            'id': 20001,
+                            'subMenuItems': [],
+                            'url': '/gaode/navigationChart'
                         },
                         {
-                            "appName":"下载区域经纬度",
-                            "caption":"下载区域经纬度",
+                            'appName': '下载区域经纬度',
+                            'caption': '下载区域经纬度',
                             icon: 'download',
-                            "id":20002,
-                            "subMenuItems":[],
-                            "url":"/gaode/getLnglat"
+                            'id': 20002,
+                            'subMenuItems': [],
+                            'url': '/gaode/getLnglat'
                         },
                         {
-                            "appName":"区域面",
-                            "caption":"区域面",
+                            'appName': '区域面',
+                            'caption': '区域面',
                             icon: 'area',
-                            "id":20003,
-                            "subMenuItems":[],
-                            "url":"/gaode/areaFace"
+                            'id': 20003,
+                            'subMenuItems': [],
+                            'url': '/gaode/areaFace'
                         }
                     ],
-                    "url":"/gaode"
+                    'url': '/gaode'
                 },
                 {
                     'appName': 'Echarts',
@@ -128,52 +128,52 @@ export default {
                     id: 30001,
                     subMenuItems: [
                         {
-                            "appName":"后向轨迹",
-                            "caption":"后向轨迹",
+                            'appName': '后向轨迹',
+                            'caption': '后向轨迹',
                             icon: 'backTrajectory',
-                            "id":30002,
-                            "subMenuItems":[],
-                            "url":"/echarts/backTrajectory"
+                            'id': 30002,
+                            'subMenuItems': [],
+                            'url': '/echarts/backTrajectory'
                         },
                         {
-                            "appName":"复杂条形图图表",
-                            "caption":"复杂条形图图表",
+                            'appName': '复杂条形图图表',
+                            'caption': '复杂条形图图表',
                             icon: 'complexChart',
-                            "id":30003,
-                            "subMenuItems":[],
-                            "url":"/echarts/barComplexChart"
+                            'id': 30003,
+                            'subMenuItems': [],
+                            'url': '/echarts/barComplexChart'
                         },
                         {
-                            "appName":"复杂饼图图表",
-                            "caption":"复杂饼图图表",
+                            'appName': '复杂饼图图表',
+                            'caption': '复杂饼图图表',
                             icon: 'complexChart',
-                            "id":30004,
-                            "subMenuItems":[],
-                            "url":"/echarts/pieComplexChart"
+                            'id': 30004,
+                            'subMenuItems': [],
+                            'url': '/echarts/pieComplexChart'
                         },
                     ],
                     url: 'echarts'
                 },
                 {
-                    "appName":"plotly.js",
-                    "caption":"plotly.js",
+                    'appName': 'plotly.js',
+                    'caption': 'plotly.js',
                     icon: 'plotly',
-                    "url":"/plotly",
-                    "id":40003,
+                    'url': '/plotly',
+                    'id': 40003,
                     subMenuItems: [
                         {
-                            "appName":"激光雷达图",
-                            "caption":"激光雷达图",
-                            "id":40001,
+                            'appName': '激光雷达图',
+                            'caption': '激光雷达图',
+                            'id': 40001,
                             icon: '',
-                            "url":"/plotly/lidarChart"
+                            'url': '/plotly/lidarChart'
                         },
                         {
-                            "appName":"粒径谱图",
-                            "caption":"粒径谱图",
-                            "id":40002,
+                            'appName': '粒径谱图',
+                            'caption': '粒径谱图',
+                            'id': 40002,
                             icon: '',
-                            "url":"/plotly/grain"
+                            'url': '/plotly/grain'
                         }
                     ]
                 }

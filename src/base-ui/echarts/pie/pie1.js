@@ -173,42 +173,42 @@ export const pieOptions1 = {
 }
 
 export const pieChartData1 = {
-    "series": [
-      {
-        "data": [
-          {
-            "name": "中国",
-            "value": 1837
-          },
-          {
-            "name": "英国",
-            "value": 192
-          },
-          {
-            "name": "日本",
-            "value": 162
-          },
-          {
-            "name": "美国",
-            "value": 151
-          },
-          {
-            "name": "韩国",
-            "value": 131
-          },
-          {
-            "name": "上海",
-            "value": 1
-          },
-          {
-            "name": "其他",
-            "value": 142
-          }
-        ],
-        "type": "pie"
-      }
+    'series': [
+        {
+            'data': [
+                {
+                    'name': '中国',
+                    'value': 1837
+                },
+                {
+                    'name': '英国',
+                    'value': 192
+                },
+                {
+                    'name': '日本',
+                    'value': 162
+                },
+                {
+                    'name': '美国',
+                    'value': 151
+                },
+                {
+                    'name': '韩国',
+                    'value': 131
+                },
+                {
+                    'name': '上海',
+                    'value': 1
+                },
+                {
+                    'name': '其他',
+                    'value': 142
+                }
+            ],
+            'type': 'pie'
+        }
     ],
-    "tooltip": {
-      "trigger": "item"
+    'tooltip': {
+        'trigger': 'item'
     }
-  }
+}

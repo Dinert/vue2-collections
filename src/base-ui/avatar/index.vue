@@ -53,7 +53,7 @@ export default {
     },
     methods: {
         commandSelect(item) {
-            if(item === 'logOut') {
+            if (item === 'logOut') {
                 this.$router.replace({path: `/login?redirect=${this.$route.fullPath}`})
             }
         }

@@ -187,43 +187,43 @@ export const barOptions2 = {
 
 
 export const barChartData2 = {
-    "yAxis": [
-      {
-        "name": "数据",
-        "type": "value"
-      }
+    'yAxis': [
+        {
+            'name': '数据',
+            'type': 'value'
+        }
     ],
-    "xAxis": [
-      {
-        "data": [
-          '2022-8',
-          "2022-9",
-          "2022-10",
-          "2022-11",
-          "2022-12",
-        ],
-        "type": "category"
-      }
+    'xAxis': [
+        {
+            'data': [
+                '2022-8',
+                '2022-9',
+                '2022-10',
+                '2022-11',
+                '2022-12',
+            ],
+            'type': 'category'
+        }
     ],
-    "legend": {
-      "data": [
-        "数据"
-      ]
+    'legend': {
+        'data': [
+            '数据'
+        ]
     },
-    "series": [
-      {
-        "data": [
-          1128,
-          1145,
-          277,
-          333,
-          111,
-        ],
-        "name": "数据",
-        "type": "bar"
-      }
+    'series': [
+        {
+            'data': [
+                1128,
+                1145,
+                277,
+                333,
+                111,
+            ],
+            'name': '数据',
+            'type': 'bar'
+        }
     ],
-    "tooltip": {
-      "trigger": "axis"
+    'tooltip': {
+        'trigger': 'axis'
     }
-  }
+}

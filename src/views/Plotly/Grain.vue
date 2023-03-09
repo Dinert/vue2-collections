@@ -12,12 +12,12 @@ export default {
 
     mounted() {
         new Grain({
-            data:[grainJson],
+            data: [grainJson],
             container: 'container',
             config: {
                 title: '粒径谱图'
             }
-        }).init();
+        }).init()
     },
     data() {
         return {

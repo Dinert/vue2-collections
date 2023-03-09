@@ -73,7 +73,7 @@ import createMeshMixins from '@/mixins/gaode/createMesh'
 import createPointMixins from '@/mixins/gaode/createPoint'
 import createCanvasLineMixins from '@/mixins/gaode/createCanvasLine'
 
-const aerialVehiclesJSON =  require('@/assets/json/AerialVehicles.json')
+const aerialVehiclesJSON = require('@/assets/json/AerialVehicles.json')
 
 export default {
     name: 'Region',
@@ -82,7 +82,7 @@ export default {
         await this.initMap({
             viewMode: '3D',
         }, {
-            plugins: ["Map3D", "AMap.DistrictSearch", "AMap.DistrictLayer"],
+            plugins: ['Map3D', 'AMap.DistrictSearch', 'AMap.DistrictLayer'],
             version: '1.4.15',
             Loca: {
                 version: '1.3.2'
@@ -125,17 +125,17 @@ export default {
     },
     methods: {
         inputClick(value) {
-            var styleName = "amap://styles/" + value;
-            this.gaodeMap.setMapStyle(styleName);
+            const styleName = 'amap://styles/' + value
+            this.gaodeMap.setMapStyle(styleName)
         },
 
         reset() {
-            this.flagCylinder= true
-            this.flagMesh= true
-            this.flagPoint= true
-            this.flagLine= true
+            this.flagCylinder = true
+            this.flagMesh = true
+            this.flagPoint = true
+            this.flagLine = true
 
-            this.gaodeMap.setPitch(60);
+            this.gaodeMap.setPitch(60)
             this.gaodeCylinder.setFitView()
             this.gaodeCylinder.show()
             this.gaodeMesh.show()
@@ -144,40 +144,40 @@ export default {
         },
 
         cylinderClick() {
-            if(this.flagCylinder) {
+            if (this.flagCylinder) {
                 this.gaodeCylinder.hide()
                 this.flagCylinder = false
-            }else {
+            } else {
                 this.gaodeCylinder.show()
                 this.flagCylinder = true
             }
         },
 
         meshClick() {
-            if(this.flagMesh) {
+            if (this.flagMesh) {
                 this.gaodeMesh.hide()
                 this.flagMesh = false
-            }else {
+            } else {
                 this.gaodeMesh.show()
                 this.flagMesh = true
             }
         },
 
         pointClick() {
-            if(this.flagPoint) {
+            if (this.flagPoint) {
                 this.gaodePoint.hide()
                 this.flagPoint = false
-            }else {
+            } else {
                 this.gaodePoint.show()
                 this.flagPoint = true
             }
         },
 
         lineClick() {
-            if(this.flagLine) {
+            if (this.flagLine) {
                 this.gaodeCanvasLine.hide()
                 this.flagLine = false
-            }else {
+            } else {
                 this.gaodeCanvasLine.show()
                 this.flagLine = true
             }
@@ -185,7 +185,7 @@ export default {
 
 
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>
