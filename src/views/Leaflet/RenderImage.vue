@@ -57,6 +57,7 @@ export default {
 
 <style lang="scss" scoped>
 .map {
+    position: relative;
     width: 100%;
     height: 100%;
 

@@ -153,7 +153,7 @@ export default {
                 })
             }
 
-            districtSearch({
+            return districtSearch({
                 mask: [this.name]
             }).then(res => {
 
@@ -199,6 +199,7 @@ export default {
 @import "@/assets/scss/gaode.scss";
 
 .map {
+    position: relative;
     width: 100%;
     height: 100%;
 
