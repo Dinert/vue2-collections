@@ -38,6 +38,10 @@ export default {
         })
         await this.initWindy()
 
+        this.$notify.success({
+            title: '成功',
+            message: '这是一个实时的风场，可选择区域进行渲染！'
+        })
     },
     data() {
         return {

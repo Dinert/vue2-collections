@@ -42,6 +42,12 @@ export default {
         await this.createControl()
         await this.initWindy()
 
+        this.$notify.success({
+            title: '成功',
+            message: '空气质量的渲染差值图，根据不同污染物的等级渲染不同的颜色！限定区域进行渲染',
+            duration: 0
+        })
+
     },
     data() {
         return {

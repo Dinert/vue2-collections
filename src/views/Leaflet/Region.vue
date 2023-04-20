@@ -35,6 +35,12 @@ export default {
         this.createControl()
 
         this.createOutLine({path: guangdongshengJSON.data})
+
+        this.$notify.success({
+            title: '成功',
+            message: '绘制经纬度区域轮廓',
+            duration: 0
+        })
     },
 
     data() {

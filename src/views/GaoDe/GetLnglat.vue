@@ -88,6 +88,16 @@ export default {
         })
 
         this.search()
+
+        this.$notify.success({
+            title: '成功',
+            dangerouslyUseHTMLString: true,
+            message: `<h3>功能说明：</h3>
+                      <h4>1. 使用高德地图的API绘制出经纬度的轮廓</h4>
+                      <h4>2. 支持下载县级以上的经纬度轮廓文件</h4>
+                    `,
+            duration: 0
+        })
     },
 
     data() {

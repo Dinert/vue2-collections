@@ -1421,6 +1421,11 @@
     yargs "^17.5.1"
     yargs-parser "^20.2.9"
 
+"@dinert/element-ui@^1.0.4-78":
+  version "1.0.4-78"
+  resolved "http://192.168.1.106:4873/@dinert%2felement-ui/-/element-ui-1.0.4-78.tgz#bc2721592e896aeb0d2cef88cb2872d6ac74ef5c"
+  integrity sha512-WfXLU2x2HWwnubxNThnw6HsVabFOihlnHSootbaRi0b9PQMM+u4V+0UI/uc0Abtv/wBBAELFshO+jotCqazvmg==
+
 "@discoveryjs/json-ext@0.5.7":
   version "0.5.7"
   resolved "http://192.168.1.106:4873/@discoveryjs%2fjson-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
@@ -3834,6 +3839,11 @@ dotenv@^10.0.0:
   version "10.0.0"
   resolved "http://192.168.1.106:4873/dotenv/-/dotenv-10.0.0.tgz#3d4227b8fb95f81096cdd2b66653fb2c7085ba81"
   integrity sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==
+
+draggable@^4.2.0:
+  version "4.2.0"
+  resolved "http://192.168.1.106:4873/draggable/-/draggable-4.2.0.tgz#149c0ca176df6d8b512048c8e451f499fc047b9a"
+  integrity sha512-mu0FSsNY1Sb2q3EuAi3IBI6oVMV8l74y6xxYmloHq2/PJjOJEfpZCLGShzNUQKAF7JMfxA6ejxoGPyw5x6v8Ow==
 
 duplexer@^0.1.2:
   version "0.1.2"

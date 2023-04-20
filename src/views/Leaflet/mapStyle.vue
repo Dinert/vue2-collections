@@ -15,6 +15,11 @@ export default {
     async created() {
         await this.initMap()
         this.createControl()
+
+        this.$notify.success({
+            title: '成功',
+            message: '请尝试右上角的切换地图风格图层'
+        })
     },
     data() {
         return {

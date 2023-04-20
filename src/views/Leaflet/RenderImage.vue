@@ -29,6 +29,13 @@ export default {
         const corner2 = L.latLng(9.83703, 60.502355)
         const bounds = L.latLngBounds(corner1, corner2)
         this.createOverlayImage({path: bounds, url: AQIImage, setView: true})
+
+
+        this.$notify.success({
+            title: '成功',
+            message: '使用后端生成好的图片的空气质量渲染差值图，根据不同污染物的等级渲染不同的颜色！可根据不同区域进行渲染！',
+            duration: 0
+        })
     },
 
     data() {

@@ -116,6 +116,17 @@ const routes = [
         ]
     },
     {
+        path: '/elementUI',
+        component: Layout,
+        redirect: '/elementUI/table',
+        children: [
+            {
+                path: 'table',
+                component: () => import('@/views/ElementUI/DTable.vue'),
+            },
+        ]
+    },
+    {
         path: '/login',
         component: () => import('@/views/Login')
     },

@@ -27,6 +27,12 @@ export default {
         this.createControl()
 
         this.createLine({path: aerialVehiclesJSON, setView: true, weight: 6})
+
+        this.$notify.success({
+            title: '成功',
+            message: '绘制路线',
+            duration: 0
+        })
     },
 
     data() {

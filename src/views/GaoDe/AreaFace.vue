@@ -89,6 +89,16 @@ export default {
         })
 
         this.search()
+
+        this.$notify.success({
+            title: '成功',
+            dangerouslyUseHTMLString: true,
+            message: `<h3>功能说明：</h3>
+                      <h4>1. 使用高德地图的API生成该区域的3D掩模</h4>
+                      <h4>2. 支持生成县级以上的区域掩模</h4>
+                    `,
+            duration: 0
+        })
     },
 
     data() {

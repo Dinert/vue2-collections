@@ -18,7 +18,7 @@
                 </div>
                 <nav-menu/>
             </div>
-            <div class="layout-body-right">
+            <div class="layout-body-right" :style="{width: `calc(100% - ${getNavMenuCollapse ? '64px' : '260px'})`}">
                 <div class="layout-body-right-header">
                     <span class="layout-body-right-header-menu" :collapse="getNavMenuCollapse"
                         @click="changeCollapse(getNavMenuCollapse)"
@@ -278,7 +278,6 @@ export default {
         &-right {
             display: flex;
             height: 100%;
-            flex: 1;
             flex-direction: column;
 
             &-header {
@@ -338,6 +337,7 @@ export default {
 
             &-main {
                 position: relative;
+                z-index: 0;
                 overflow: hidden;
                 padding: 16px;
                 height: 0;

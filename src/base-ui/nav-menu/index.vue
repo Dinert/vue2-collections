@@ -176,6 +176,21 @@ export default {
                             'url': '/plotly/grain'
                         }
                     ]
+                },
+                {
+                    'appName': 'element-ui',
+                    'caption': 'element-ui',
+                    icon: 'element-ui',
+                    'url': '/elementUI',
+                    'id': 40005,
+                    subMenuItems: [
+                        {
+                            'appName': '自适应表格',
+                            'caption': '自适应高度表格',
+                            'url': '/elementUI/table'
+
+                        }
+                    ]
                 }
             ]
             const filterId = [] // 过滤个人中心
