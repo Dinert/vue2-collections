@@ -117,6 +117,14 @@ export default {
                             'id': 20003,
                             'subMenuItems': [],
                             'url': '/gaode/areaFace'
+                        },
+                        {
+                            'appName': '路径规划',
+                            'caption': '路径规划',
+                            icon: 'line',
+                            'id': 20004,
+                            'subMenuItems': [],
+                            'url': '/gaode/pathQuery'
                         }
                     ],
                     'url': '/gaode'

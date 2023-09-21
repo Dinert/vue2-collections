@@ -79,6 +79,10 @@ const routes = [
                 path: 'areaFace',
                 component: () => import('@/views/GaoDe/AreaFace.vue'),
             },
+            {
+                path: 'pathQuery',
+                component: () => import('@/views/GaoDe/PathQuery.vue'),
+            },
         ]
     },
     {
@@ -152,7 +156,6 @@ const routes = [
 ]
 
 const router = new VueRouter({
-    mode: 'history',
     base: process.env.BASE_URL,
     routes
 })
