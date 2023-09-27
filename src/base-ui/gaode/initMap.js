@@ -1,7 +1,14 @@
 import _ from 'lodash'
 import AMapLoader from '@amap/amap-jsapi-loader'
-
+let lastMapOptions = {}
 const initMap = (id, options, loadOptions) => {
+    const dom = document.querySelector(`script[src*="v=${lastMapOptions.version}"]`)
+    dom && dom.remove()
+
+    const locaDom = document.querySelector(`script[src*="v=${lastMapOptions.Loca && lastMapOptions.Loca.version}"]`)
+    locaDom && locaDom.remove()
+
+
     AMapLoader.reset && AMapLoader.reset()
 
     const defaultOptions = {
@@ -13,13 +20,15 @@ const initMap = (id, options, loadOptions) => {
     return new Promise((resolve, reject) => {
 
         const newOptions = _.defaultsDeep(_.cloneDeep(options), defaultOptions)
-
-        AMapLoader.load({
+        const newLoadOptions = _.defaultsDeep(_.cloneDeep(loadOptions), {
             key: '42cf421fce690f0566ec730bba75d72a',
             version: '2.0',
             plugins: [],
-            ...loadOptions
-        }).then(AMap => {
+        })
+
+        AMapLoader.load(newLoadOptions).then(AMap => {
+            lastMapOptions = newLoadOptions
+
             const map = new AMap.Map(id, newOptions)
             resolve(map)
         }).catch(e => {
