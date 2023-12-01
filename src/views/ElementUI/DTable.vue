@@ -1,6 +1,6 @@
 <template>
     <div class="customTable">
-        <d-table-page
+        <dinert-table-page
             v-bind="{
                 table,
                 form: searchForm,
@@ -25,7 +25,7 @@
                     @click="changeTable"
                 >切换表格数据</el-button>
             </template>
-        </d-table-page>
+        </dinert-table-page>
     </div>
 </template>
 

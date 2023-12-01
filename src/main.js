@@ -17,6 +17,7 @@ import './assets/icons'
 
 // 插件
 import './plugins/element-ui'
+import './plugins/dinert'
 import './plugins/icon'
 import 'animate.css'
 import './rem'

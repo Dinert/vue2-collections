@@ -1,10 +1,9 @@
-import {DTablePage, filterNullStrUndefind} from '@dinert/element-ui'
+import {filterNullStrUndefind} from '@dinert/element-ui'
 import {isEqual, isEmpty, cloneDeep} from 'lodash'
 import {dataTransformRod, ImageIdTransUrl, handleAmount} from '@/utils/transformData'
 
 export default {
     components: {
-        DTablePage,
     },
     created() {
         if (this.tableId) {

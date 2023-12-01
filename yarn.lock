@@ -1421,10 +1421,10 @@
     yargs "^17.5.1"
     yargs-parser "^20.2.9"
 
-"@dinert/element-ui@^1.0.4-78":
-  version "1.0.4-78"
-  resolved "http://192.168.1.106:4873/@dinert%2felement-ui/-/element-ui-1.0.4-78.tgz#bc2721592e896aeb0d2cef88cb2872d6ac74ef5c"
-  integrity sha512-WfXLU2x2HWwnubxNThnw6HsVabFOihlnHSootbaRi0b9PQMM+u4V+0UI/uc0Abtv/wBBAELFshO+jotCqazvmg==
+"@dinert/element-ui@^1.0.4-83":
+  version "1.0.4-83"
+  resolved "http://192.168.1.106:4873/@dinert%2felement-ui/-/element-ui-1.0.4-83.tgz#b1a09c593ab66c1a2928f0b4b7b4c2f90036b036"
+  integrity sha512-iB1ZJyqe0Bji05Ttnv6sxedY2tFCuaGS8goEnLEBUVKF3H0BfxEWC5a+uleWkekMjt5GMLqqsTlT78QlTYFkqg==
 
 "@discoveryjs/json-ext@0.5.7":
   version "0.5.7"
