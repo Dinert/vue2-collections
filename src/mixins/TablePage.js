@@ -100,51 +100,26 @@ export default {
             const isSame = this.isEqual(this.params, this.oldParams) // 判断当前提交的参数和上一次提交的参数是否相同
             options.isSame = isSame
             // 在查询按钮点击时才走当前提交的参数和上一次提交的参数是否相同
-            if (options.name === '查询') {
+            if (options.name === 'search') {
                 if (!isSame) {
                     this.pagination.currentPage = 1
                     this.params = this.getTableParams(options)
                 }
                 this.oldParams = {...this.params}
-            } else if (options.name === '重置') {
+            } else if (options.name === 'reset') {
                 this.resetPagination()
                 this.params = this.getTableParams(options)
                 this.oldParams = {...this.params}
 
-            } else if (options.name === '删除') {
+            } else if (options.name === 'delete') {
                 if (this.table.data && this.table.data.length) {
                     if (this.table.data.length === 1 && this.pagination.currentPage > 1) {
                         this.pagination.currentPage = this.pagination.currentPage - 1
                         this.params = this.getTableParams(options)
                     }
                 }
-            } else if (options.name === 'current') {
-                if (this.oldParams.data && this.oldParams.data.pageNum) {
-                    this.oldParams.data.pageNum = options.value
-                } else if (this.oldParams.data && this.oldParams.data.page) {
-                    this.oldParams.data.page = options.value
-                } else if (this.oldParams.params && this.oldParams.params.page) {
-                    this.oldParams.params.page = options.value
-                } else if (this.oldParams.params && this.oldParams.params.pageNum) {
-                    this.oldParams.params.pageNum = options.value
-                }
-
-                if (this.oldParams.data && this.oldParams.data.pageSize) {
-                    this.oldParams.data.pageSize = this.pagination.pageSize
-                } else if (this.oldParams.params && this.oldParams.params.pageSize) {
-                    this.oldParams.params.pageSize = this.pagination.pageSize
-                }
-
-                this.params = {...this.oldParams}
-            } else if (options.name === 'size') {
-                if (this.oldParams.data && this.oldParams.data.pageSize) {
-                    this.oldParams.data.pageSize = options.value
-                } else if (this.oldParams.params && this.oldParams.params.pageSize) {
-                    this.oldParams.params.pageSize = options.value
-                }
-                this.params = {...this.oldParams}
-            } else {
-                this.params = {...this.oldParams}
+            } else if (['current', 'size', 'reset'].includes(options.name || '')) {
+                this.oldParams = $lodash.cloneDeep(this.params)
             }
 
             const newParams = _.cloneDeep(this.params)
@@ -310,12 +285,12 @@ export default {
         },
 
         // 查询
-        search(options) {
+        search(options = {name: 'search'}) {
             return this.getTableData(options)
         },
 
         // 查询重置
-        resetSearch(options) {
+        resetSearch(options = {name: 'reset'}) {
             this.resetParams()
             this.search(options)
         },
