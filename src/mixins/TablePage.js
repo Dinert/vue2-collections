@@ -3,8 +3,7 @@ import {isEqual, isEmpty, cloneDeep} from 'lodash'
 import {dataTransformRod, ImageIdTransUrl, handleAmount} from '@/utils/transformData'
 
 export default {
-    components: {
-    },
+
     created() {
         if (this.tableId) {
             this.getTableSortData()

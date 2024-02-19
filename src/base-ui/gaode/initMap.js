@@ -1,5 +1,9 @@
 import _ from 'lodash'
 import AMapLoader from '@amap/amap-jsapi-loader'
+let lastMapOptions = {}
+window._AMapSecurityConfig = {
+    securityJsCode: '530231bc60a6258f7fa6b84d5d532761',
+}
 const initMap = (id, options, loadOptions) => {
 
     AMapLoader.reset && AMapLoader.reset()
@@ -14,13 +18,14 @@ const initMap = (id, options, loadOptions) => {
 
         const newOptions = _.defaultsDeep(_.cloneDeep(options), defaultOptions)
         const newLoadOptions = _.defaultsDeep(_.cloneDeep(loadOptions), {
-            key: '42cf421fce690f0566ec730bba75d72a',
+            key: '720d49e9651522b9b4661195147dc067',
             version: '2.0',
             plugins: [],
         })
 
         AMapLoader.load(newLoadOptions).then(AMap => {
             lastMapOptions = newLoadOptions
+            console.log(lastMapOptions, 'lastMapOptions')
 
             const map = new AMap.Map(id, newOptions)
             resolve(map)

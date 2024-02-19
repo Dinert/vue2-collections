@@ -82,29 +82,28 @@
 <script>
 
 
-import initMapMixins from '@/mixins/gaode/initMap'
+import initMap from '@/base-ui/gaode/initMap'
 
-
+let gaodeMap = null
+let geocoder = null
 export default {
     name: 'Region',
-    mixins: [initMapMixins],
-    async created() {
-        await this.initMap({
+    async mounted() {
+        gaodeMap = await initMap('map', {
             viewMode: '3D',
             center: [116.397428, 39.90923], // 地图中心点
         }, {
-            key: 'af023d6fb6d5113012573aeabd087475',
             plugins: ['AMap.DistrictSearch', 'AMap.Driving', 'AMap.PlaceSearch', 'AMap.Geocoder'],
         })
         this.inputClick('dark')
 
 
-        this.geocoder = new AMap.Geocoder({
+        geocoder = new AMap.Geocoder({
             radius: 1000 // 范围，默认：500
         })
 
 
-        this.gaodeMap.on('click', e => {
+        gaodeMap.on('click', e => {
 
             if (this.index === 2) {
                 this.index = 0
@@ -138,13 +137,13 @@ export default {
         },
         inputClick(value) {
             const styleName = 'amap://styles/' + value
-            this.gaodeMap.setMapStyle(styleName)
+            gaodeMap.setMapStyle(styleName)
         },
 
         searchFn(startText, endText) {
 
             const driving = new AMap.Driving({
-                map: this.gaodeMap,
+                map: gaodeMap,
                 ferry: 1,
                 panel: 'panel'
             })
@@ -183,7 +182,7 @@ export default {
         lngLats: {
             handler(newVal) {
                 if (newVal[0]) {
-                    this.geocoder.getAddress(newVal[0], (status, result) => {
+                    geocoder.getAddress(newVal[0], (status, result) => {
                         if (status === 'complete') {
                             const address = result.regeocode.formattedAddress
                             this.$set(this.lngLatsText, 0, address)
@@ -191,7 +190,7 @@ export default {
                     })
                 }
                 if (newVal[1]) {
-                    this.geocoder.getAddress(newVal[1], (status, result) => {
+                    geocoder.getAddress(newVal[1], (status, result) => {
                         if (status === 'complete') {
                             const address = result.regeocode.formattedAddress
                             console.log(address, '12312')

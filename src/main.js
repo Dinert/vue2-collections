@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import draggable from 'vuedraggable'
 import './permission'
 
 // 样式
@@ -22,7 +23,7 @@ import './plugins/icon'
 import 'animate.css'
 import './rem'
 
-
+Vue.component(draggable.name, draggable)
 Vue.config.productionTip = false
 new Vue({
     router,

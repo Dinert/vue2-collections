@@ -3,14 +3,13 @@ import _ from 'lodash'
 const createOutLine = function (map, options) { // 创建地图轮廓
 
     const defaultOptions = {
-        fillOpacity: 0,
         strokeWeight: 2,
         fillOpacity: 0.4,
         fillColor: '#80d8ff',
         strokeColor: '#0091ea'
     }
 
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
         const newOptions = _.defaultsDeep(_.cloneDeep(options), defaultOptions)
         const polygons = []
         for (let i = 0; i < newOptions.path.length; i++) {

@@ -72,22 +72,30 @@
 
 <script>
 
+import initMap from '@/base-ui/gaode/initMap'
 
-import initMapMixins from '@/mixins/gaode/initMap'
 import districtSearch from '@/base-ui/gaode/districtSearch'
-import createOutLineMixins from '@/mixins/gaode/createOutLine'
+import createOutLine from '@/base-ui/gaode/createOutLine'
 
 import {saveAs} from 'file-saver'
 
+let gaodeMap = null
+let gaodeOutLine = null
+let pathData = []
 export default {
-    name: 'Region',
-    mixins: [initMapMixins, createOutLineMixins],
-    async created() {
-        await this.initMap({}, {
-            plugins: ['AMap.DistrictSearch']
+    name: 'GetLnglat',
+    async mounted() {
+        gaodeMap = await initMap('map', {
+            viewMode: '3D',
+        }, {
+            plugins: ['Map3D', 'AMap.DistrictSearch', 'AMap.DistrictLayer'],
+            version: '1.4.15',
+            Loca: {
+                version: '1.3.2'
+            }
         })
-
         this.search()
+
 
         this.$notify.success({
             title: '成功',
@@ -96,14 +104,13 @@ export default {
                       <h4>1. 使用高德地图的API绘制出经纬度的轮廓</h4>
                       <h4>2. 支持下载县级以上的经纬度轮廓文件</h4>
                     `,
-            duration: 0
         })
     },
 
     data() {
         return {
             pathData: '',
-            name: '北京',
+            name: '北京市',
             restaurants: [
                 {
                     value: '广东省',
@@ -124,16 +131,6 @@ export default {
         inputClick(value) {
             const styleName = 'amap://styles/' + value
             this.gaodeMap.setMapStyle(styleName)
-        },
-
-        toggle() {
-            if (this.flag) {
-                this.leafletMap.removeLayer(this.leafletLine)
-                this.flag = false
-            } else {
-                this.leafletMap.addLayer(this.leafletLine)
-                this.flag = true
-            }
         },
 
         querySearch(queryString, cb) {
@@ -164,9 +161,8 @@ export default {
             }
 
             return districtSearch({
-                mask: [this.name]
-            }).then(res => {
-
+                mask: [this.name],
+            }).then(async res => {
                 if (this.isRestaurants(this.name).length === 0) {
                     this.restaurants.push({
                         value: this.name,
@@ -179,11 +175,13 @@ export default {
                     message: '查找' + this.name + '的区域数据成功'
                 })
 
-                this.gaodeOutLine && this.gaodeMap.remove(this.gaodeOutLine)
-                this.createOutLine({
-                    path: res.bounds
+                gaodeOutLine && gaodeMap.remove(gaodeOutLine)
+                gaodeOutLine = await createOutLine(gaodeMap, {
+                    path: res.bounds,
+                    setView: true
+
                 })
-                this.pathData = res
+                pathData = res
 
             }).catch(() => {
                 this.$message({
@@ -194,8 +192,8 @@ export default {
         },
 
         download() {
-            const name = this.pathData.content.name
-            const content = JSON.stringify({name: name, data: this.pathData.mask})
+            const name = pathData.content.name
+            const content = JSON.stringify({name: name, data: pathData.mask})
             const blob = new Blob([content], {type: 'text/plain;charset=utf-8'})
 
             saveAs(blob, name + '.json')

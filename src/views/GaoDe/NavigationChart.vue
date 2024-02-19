@@ -67,19 +67,24 @@
 </template>
 
 <script>
-import initMapMixins from '@/mixins/gaode/initMap'
-import createCylinderMixins from '@/mixins/gaode/createCylinder'
-import createMeshMixins from '@/mixins/gaode/createMesh'
-import createPointMixins from '@/mixins/gaode/createPoint'
-import createCanvasLineMixins from '@/mixins/gaode/createCanvasLine'
+import initMap from '@/base-ui/gaode/initMap'
+import createCylinder from '@/base-ui/gaode/createCylinder'
+import createMesh from '@/base-ui/gaode/createMesh'
+import createPoint from '@/base-ui/gaode/createPoint'
+import createCanvasLine from '@/base-ui/gaode/createCanvasLine'
+
 
 const aerialVehiclesJSON = require('@/assets/json/AerialVehicles.json')
 
+let gaodeMap = null
+let gaodeCylinder = null
+let gaodeMesh = null
+let gaodePoint = null
+let gaodeCanvasLine = null
 export default {
     name: 'Region',
-    mixins: [initMapMixins, createCylinderMixins, createMeshMixins, createPointMixins, createCanvasLineMixins],
     async mounted() {
-        await this.initMap({
+        gaodeMap = await initMap('map', {
             viewMode: '3D',
         }, {
             plugins: ['Map3D', 'AMap.DistrictSearch', 'AMap.DistrictLayer'],
@@ -89,28 +94,29 @@ export default {
             }
         })
 
-        this.createCylinder({
+        gaodeCylinder = await createCylinder(gaodeMap, {
             path: aerialVehiclesJSON,
             type: 'AQI',
             style: {
                 radius: 100
             },
-            pitch: 60
+            pitch: 60, setView: true
+        })
+        gaodeMesh = await createMesh(gaodeMap, {
+            path: aerialVehiclesJSON,
+            type: 'AQI', setView: true
         })
 
-        this.createMesh({
+        gaodePoint = await createPoint(gaodeMap, {
             path: aerialVehiclesJSON,
             type: 'AQI',
+            setView: true
         })
 
-        this.createPoint({
+        gaodeCanvasLine = await createCanvasLine(gaodeMap, {
             path: aerialVehiclesJSON,
             type: 'AQI',
-        })
-
-        this.createCanvasLine({
-            path: aerialVehiclesJSON,
-            type: 'AQI',
+            setView: true
         })
 
         this.$notify.success({
@@ -122,7 +128,6 @@ export default {
     <h4>3. 面走航图：根据污染物的浓度大小，生成不同高度的3D面积图，前后的污染物浓度使用颜色差值渲染展示</h4>
     <h4>4. 线走航图：根据污染物的浓度大小，差值颜色渲染成渐变路线图</h4>
     <h4>5. 点走航图：根据污染物的浓度大小，生成不同颜色的点位图</h4>`,
-            duration: 0
         })
 
     },
@@ -147,50 +152,50 @@ export default {
             this.flagPoint = true
             this.flagLine = true
 
-            this.gaodeMap.setPitch(60)
-            this.gaodeCylinder.setFitView()
-            this.gaodeCylinder.show()
-            this.gaodeMesh.show()
-            this.gaodePoint.show()
-            this.gaodeCanvasLine.show()
+            gaodeMap.setPitch(60)
+            gaodeCylinder.setFitView()
+            gaodeCylinder.show()
+            gaodeMesh.show()
+            gaodePoint.show()
+            gaodeCanvasLine.show()
         },
 
         cylinderClick() {
             if (this.flagCylinder) {
-                this.gaodeCylinder.hide()
+                gaodeCylinder.hide()
                 this.flagCylinder = false
             } else {
-                this.gaodeCylinder.show()
+                gaodeCylinder.show()
                 this.flagCylinder = true
             }
         },
 
         meshClick() {
             if (this.flagMesh) {
-                this.gaodeMesh.hide()
+                gaodeMesh.hide()
                 this.flagMesh = false
             } else {
-                this.gaodeMesh.show()
+                gaodeMesh.show()
                 this.flagMesh = true
             }
         },
 
         pointClick() {
             if (this.flagPoint) {
-                this.gaodePoint.hide()
+                gaodePoint.hide()
                 this.flagPoint = false
             } else {
-                this.gaodePoint.show()
+                gaodePoint.show()
                 this.flagPoint = true
             }
         },
 
         lineClick() {
             if (this.flagLine) {
-                this.gaodeCanvasLine.hide()
+                gaodeCanvasLine.hide()
                 this.flagLine = false
             } else {
-                this.gaodeCanvasLine.show()
+                gaodeCanvasLine.show()
                 this.flagLine = true
             }
         }

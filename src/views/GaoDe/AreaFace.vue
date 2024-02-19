@@ -72,20 +72,24 @@
 <script>
 
 
-import initMapMixins from '@/mixins/gaode/initMap'
-import createWallMixins from '@/mixins/gaode/createWall'
+import initMap from '@/base-ui/gaode/initMap'
+import createWall from '@/base-ui/gaode/createWall'
+
 import districtSearch from '@/base-ui/gaode/districtSearch'
 
-
+let gaodeMap = null
+let gaodeWall = null
 export default {
     name: 'AreaFace',
-    mixins: [initMapMixins, createWallMixins],
     async created() {
-        await this.initMap({
-            viewMode: '3D'
+        gaodeMap = await initMap('map', {
+            viewMode: '3D',
         }, {
+            plugins: ['Map3D', 'AMap.DistrictSearch', 'AMap.DistrictLayer'],
             version: '1.4.15',
-            plugins: ['Map3D', 'AMap.DistrictSearch']
+            Loca: {
+                version: '1.3.2'
+            }
         })
 
         this.search()
@@ -124,7 +128,7 @@ export default {
     methods: {
         inputClick(value) {
             const styleName = 'amap://styles/' + value
-            this.gaodeMap.setMapStyle(styleName)
+            gaodeMap.setMapStyle(styleName)
         },
 
         querySearch(queryString, cb) {
@@ -154,9 +158,9 @@ export default {
                 })
             }
 
-            districtSearch({
+            return districtSearch({
                 mask: [this.name]
-            }).then(res => {
+            }).then(async res => {
 
                 if (this.isRestaurants(this.name).length === 0) {
                     this.restaurants.push({
@@ -170,15 +174,14 @@ export default {
                     message: '渲染' + this.name + '的区域成功'
                 })
 
-                this.gaodeWall && this.gaodeMap.remove(this.gaodeWall)
-
-                this.createWall({
+                gaodeWall && gaodeMap.remove(gaodeWall)
+                gaodeWall = await createWall(gaodeMap, {
                     path: res.bounds,
                     cityName: res.content.name,
                     pitch: 50,
                 })
 
-                this.gaodeMap.setMask(res.mask)
+                gaodeMap.setMask(res.mask)
 
             }).catch(() => {
                 this.$message({

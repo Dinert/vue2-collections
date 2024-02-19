@@ -170,7 +170,8 @@ export default {
     },
     methods: {
         changeTable() {
-            if (this.table.data.length !== 17) {
+            console.log(this.table.data.length, 'this.table.data.lengththis.table.data.length')
+            if (this.table.data.length === tableData2) {
                 this.table.data = tableData1
             } else {
                 this.table.data = tableData2
