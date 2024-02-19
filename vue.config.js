@@ -6,6 +6,7 @@ function resolve(dir) {
 }
 
 module.exports = defineConfig({
+    publicPath: process.env.NODE_ENV !== 'development' ? './' : '/',
     transpileDependencies: true,
     lintOnSave: false,
     productionSourceMap: false,
