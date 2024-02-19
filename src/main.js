@@ -24,7 +24,6 @@ import 'animate.css'
 import './rem'
 
 Vue.component(draggable.name, draggable)
-
 Vue.config.productionTip = false
 new Vue({
     router,
