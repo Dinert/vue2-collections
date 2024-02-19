@@ -9,7 +9,7 @@
                     :label="item.label" :value="item.value"
                 />
             </el-select>
-            <el-button type="primary" @click="toggleWind">{{ windy && windy.windyFlag ? '关闭风场' : '打开风场' }}</el-button>
+            <el-button type="primary" @click="toggleWind">{{ windyFlag ? '关闭风场' : '打开风场' }}</el-button>
 
         </div>
     </section>
