@@ -6,15 +6,16 @@
 <script>
 
 
-import initMapMixins from '@/mixins/leaflet/initMap'
-import createControlMixins from '@/mixins/leaflet/createControl'
+import initMap from '@/base-ui/leaflet/initMap'
+import createControl from '@/base-ui/leaflet/createControl'
+
 
 export default {
     name: 'Windy',
-    mixins: [initMapMixins, createControlMixins],
-    async created() {
-        await this.initMap()
-        this.createControl()
+    async mounted() {
+        const map = await initMap(this.leafletId)
+        createControl(map, {layerName: '智图-默认图层'})
+
 
         this.$notify.success({
             title: '成功',
@@ -23,7 +24,7 @@ export default {
     },
     data() {
         return {
-
+            leafletId: 'map'
         }
     }
 }

@@ -13,46 +13,50 @@
 <script>
 
 
-import initMapMixins from '@/mixins/leaflet/initMap'
-import createControlMixins from '@/mixins/leaflet/createControl'
-import createLine from '@/mixins/leaflet/createLine'
+import initMap from '@/base-ui/leaflet/initMap'
+import createControl from '@/base-ui/leaflet/createControl'
+import createLine from '@/base-ui/leaflet/createLine'
+import setView from '@/base-ui/leaflet/setView'
+
 
 const aerialVehiclesJSON = require('@/assets/json/AerialVehicles.json')
 
+let leafletMap = null
+let leafletLine = null
 export default {
     name: 'Region',
-    mixins: [initMapMixins, createControlMixins, createLine],
-    async created() {
-        await this.initMap()
-        this.createControl()
+    async mounted() {
+        leafletMap = await initMap(this.leafletId)
+        createControl(leafletMap, {layerName: '智图-默认图层'})
 
-        this.createLine({path: aerialVehiclesJSON, setView: true, weight: 6})
+        leafletLine = await createLine(leafletMap, {path: aerialVehiclesJSON, setView: true, weight: 6})
 
         this.$notify.success({
             title: '成功',
             message: '绘制路线',
-            duration: 0
+
         })
     },
 
     data() {
         return {
-            flag: true
+            flag: true,
+            leafletId: 'map'
         }
     },
     methods: {
         toggle() {
             if (this.flag) {
-                this.leafletMap.removeLayer(this.leafletLine)
+                leafletMap.removeLayer(leafletLine)
                 this.flag = false
             } else {
-                this.leafletMap.addLayer(this.leafletLine)
+                leafletMap.addLayer(leafletLine)
                 this.flag = true
             }
         },
         reset() {
             if (this.flag) {
-                this.setView(this.leafletLine.getLayers()[0].getBounds())
+                setView(leafletMap, leafletLine.getLayers()[0].getBounds())
             }
         }
     }

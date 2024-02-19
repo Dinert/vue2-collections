@@ -18,8 +18,9 @@
 <script>
 
 import L from 'leaflet'
-import leafletMixins from '@/mixins/leaflet/initMap'
-import createControlMixins from '@/mixins/leaflet/createControl'
+
+import initMap from '@/base-ui/leaflet/initMap'
+import createControl from '@/base-ui/leaflet/createControl'
 
 import '/public/assets/js/leaflet.Windy.js'
 
@@ -28,15 +29,14 @@ const guangdongshengJSON = require('@/assets/json/guangdongsheng.json')
 const guangzhoushiJSON = require('@/assets/json/guangzhoushi.json')
 const windJson = require('@/assets/json/wind.json')
 
+let windy = null
 export default {
     name: 'Windy',
-    mixins: [leafletMixins, createControlMixins],
-    async created() {
-        await this.initMap()
-        await this.createControl({
-            layerName: '智图-默认图层-暗蓝色'
-        })
-        await this.initWindy()
+    async mounted() {
+
+        const map = await initMap(this.leafletId)
+        createControl(map, {layerName: '智图-默认图层-暗蓝色'})
+        windy = await this.initWindy(map)
 
         this.$notify.success({
             title: '成功',
@@ -66,43 +66,47 @@ export default {
         }
     },
     methods: {
-        initWindy(data) {
-            this.windy = L.tileLayer.windy({
-                windData: windJson,
-                windyOutLineData: data || ZHJSON.data,
-                map: this.leafletMap,
-                windyFlag: this.windyFlag,
-                windId: 'wind', // 这是唯一的
-            }).init()
+        initWindy(map, data) {
+            return new Promise(resolve => {
+                const windy = L.tileLayer.windy({
+                    windData: windJson,
+                    windyOutLineData: data || ZHJSON.data,
+                    map,
+                    windyFlag: this.windyFlag,
+                    windId: 'wind', // 这是唯一的
+                }).init()
+                resolve(windy)
+            })
+
         },
 
         toggleWind() {
             if (this.windyFlag) {
                 this.windyFlag = false
-                this.windy.windyFlag = this.windyFlag
-                this.windy.closeWind()
+                windy.windyFlag = this.windyFlag
+                windy.closeWind()
             } else {
                 this.windyFlag = true
-                this.windy.windyFlag = this.windyFlag
-                this.windy.startWind()
+                windy.windyFlag = this.windyFlag
+                windy.startWind()
             }
         },
 
         async changeArea(value) {
             this.windyFlag = false
-            this.windy.windyFlag = this.windyFlag
-            await this.windy.closeWind()
+            windy.windyFlag = this.windyFlag
+            await windy.closeWind()
             if (value === '广东') {
-                this.windy.windy.changeWindyOutLineData(guangdongshengJSON.data)
+                windy.windy.changeWindyOutLineData(guangdongshengJSON.data)
             } else if (value === '广州') {
-                this.windy.windy.changeWindyOutLineData(guangzhoushiJSON.data)
+                windy.windy.changeWindyOutLineData(guangzhoushiJSON.data)
             } else {
-                this.windy.windy.changeWindyOutLineData(ZHJSON.data)
+                windy.windy.changeWindyOutLineData(ZHJSON.data)
             }
 
             this.windyFlag = true
-            this.windy.windyFlag = this.windyFlag
-            await this.windy.startWind()
+            windy.windyFlag = this.windyFlag
+            await windy.startWind()
         }
     },
 

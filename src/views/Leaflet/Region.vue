@@ -19,32 +19,35 @@
 <script>
 
 
-import initMapMixins from '@/mixins/leaflet/initMap'
-import createControlMixins from '@/mixins/leaflet/createControl'
-import createOutLine from '@/mixins/leaflet/createOutLine'
+import initMap from '@/base-ui/leaflet/initMap'
+import createControl from '@/base-ui/leaflet/createControl'
+import createOutLine from '@/base-ui/leaflet/createOutLine'
+
 
 const ZHJSON = require('@/assets/json/ZH.json')
 const guangdongshengJSON = require('@/assets/json/guangdongsheng.json')
 const guangzhoushiJSON = require('@/assets/json/guangzhoushi.json')
 
+let leafletMap = null
+let leafletOutLine = null
 export default {
     name: 'Region',
-    mixins: [initMapMixins, createControlMixins, createOutLine],
-    async created() {
-        await this.initMap()
-        this.createControl()
+    async mounted() {
+        leafletMap = await initMap(this.leafletId)
+        createControl(leafletMap, {layerName: '智图-默认图层'})
 
-        this.createOutLine({path: guangdongshengJSON.data})
+        leafletOutLine = await createOutLine(leafletMap, {path: guangdongshengJSON.data, setView: true})
 
         this.$notify.success({
             title: '成功',
             message: '绘制经纬度区域轮廓',
-            duration: 0
+
         })
     },
 
     data() {
         return {
+            leafletId: 'map',
             region: null,
             areaName: '广东',
             areaList: [
@@ -65,26 +68,27 @@ export default {
         }
     },
     methods: {
-        toggle() {
+        async toggle() {
             if (this.flag) {
-                this.leafletMap.removeLayer(this.leafletOutLine)
+                await leafletMap.removeLayer(leafletOutLine)
                 this.flag = false
             } else {
-                this.leafletMap.addLayer(this.leafletOutLine)
+                await leafletMap.addLayer(leafletOutLine)
                 this.flag = true
             }
         },
 
         async changeArea(value) {
-            this.leafletMap.removeLayer(this.leafletOutLine)
-            this.leafletOutLine = null
+            await leafletMap.removeLayer(leafletOutLine)
+            console.log('aaa')
+            leafletOutLine = null
 
             if (value === '广东') {
-                this.createOutLine({path: guangdongshengJSON.data})
+                leafletOutLine = await createOutLine(leafletMap, {path: guangdongshengJSON.data})
             } else if (value === '广州') {
-                this.createOutLine({path: guangzhoushiJSON.data})
+                leafletOutLine = await createOutLine(leafletMap, {path: guangzhoushiJSON.data})
             } else {
-                this.createOutLine({path: ZHJSON.data})
+                leafletOutLine = await createOutLine(leafletMap, {path: ZHJSON.data})
             }
         }
     }

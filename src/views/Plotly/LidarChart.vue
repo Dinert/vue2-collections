@@ -23,7 +23,7 @@ export default {
                       <h4>1. Plotly.js生成不同高度的激光雷达图</h4>
                       <h4>2. 使用canvas自定义画线，绘制云底高和边界层</h4>
                     `,
-            duration: 0
+
         })
     },
     data() {

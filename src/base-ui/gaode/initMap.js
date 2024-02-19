@@ -1,13 +1,6 @@
 import _ from 'lodash'
 import AMapLoader from '@amap/amap-jsapi-loader'
-let lastMapOptions = {}
 const initMap = (id, options, loadOptions) => {
-    const dom = document.querySelector(`script[src*="v=${lastMapOptions.version}"]`)
-    dom && dom.remove()
-
-    const locaDom = document.querySelector(`script[src*="v=${lastMapOptions.Loca && lastMapOptions.Loca.version}"]`)
-    locaDom && locaDom.remove()
-
 
     AMapLoader.reset && AMapLoader.reset()
 

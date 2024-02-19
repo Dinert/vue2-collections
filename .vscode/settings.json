@@ -5,7 +5,7 @@
     "files.trimTrailingWhitespace": true,
     "stylelint.validate": ["css", "scss", "sass", "vue", "html"],
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true,
-        "source.fixAll.stylelint": true
+        "source.fixAll.eslint": "explicit",
+        "source.fixAll.stylelint": "explicit"
     }
 }

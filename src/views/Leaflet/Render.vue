@@ -15,7 +15,7 @@
                     :label="item.label" :value="item.value"
                 />
             </el-select>
-            <el-button type="primary" @click="toggleWind">{{ windy && windy.overlayFlag ? '关闭渲染' : '打开渲染' }}</el-button>
+            <el-button type="primary" @click="toggleWind">{{ overlayFlag ? '关闭渲染' : '打开渲染' }}</el-button>
 
         </div>
     </section>
@@ -24,8 +24,8 @@
 <script>
 import L from 'leaflet'
 
-import leafletMixins from '@/mixins/leaflet/initMap'
-import createControlMixins from '@/mixins/leaflet/createControl'
+import initMap from '@/base-ui/leaflet/initMap'
+import createControl from '@/base-ui/leaflet/createControl'
 
 import '/public/assets/js/leaflet.Windy.js'
 
@@ -34,18 +34,20 @@ const guangdongshengJSON = require('@/assets/json/guangdongsheng.json')
 const guangzhoushiJSON = require('@/assets/json/guangzhoushi.json')
 const renderJson = require('@/assets/json/render.json')
 
+let windy = null
+
 export default {
     name: 'Render',
-    mixins: [leafletMixins, createControlMixins],
-    async created() {
-        await this.initMap()
-        await this.createControl()
-        await this.initWindy()
+    async mounted() {
+        const map = await initMap(this.leafletId)
+        createControl(map, {layerName: '智图-默认图层'})
+
+        await this.initWindy(map)
 
         this.$notify.success({
             title: '成功',
             message: '空气质量的渲染差值图，根据不同污染物的等级渲染不同的颜色！限定区域进行渲染',
-            duration: 0
+
         })
 
     },
@@ -116,47 +118,51 @@ export default {
         }
     },
     methods: {
-        initWindy(data) {
-            this.windy = L.tileLayer.windy({
-                type: this.airParams,
-                overlayData: renderJson,
-                verlayOutLineData: data || ZHJSON.data,
-                map: this.leafletMap,
-                overlayFlag: this.overlayFlag,
-            }).init()
+        initWindy(map, data) {
+
+            return new Promise(resolve => {
+                windy = L.tileLayer.windy({
+                    type: this.airParams,
+                    overlayData: renderJson,
+                    verlayOutLineData: data || ZHJSON.data,
+                    map,
+                    overlayFlag: this.overlayFlag,
+                }).init()
+                resolve(windy)
+            })
         },
 
         toggleWind() {
             if (this.overlayFlag) {
                 this.overlayFlag = false
-                this.windy.overlayFlag = this.overlayFlag
-                this.windy.closeOverlay()
+                windy.overlayFlag = this.overlayFlag
+                windy.closeOverlay()
             } else {
                 this.overlayFlag = true
-                this.windy.overlayFlag = this.overlayFlag
-                this.windy.openOverlay()
+                windy.overlayFlag = this.overlayFlag
+                windy.openOverlay()
             }
         },
 
         async changeArea(value) {
             this.overlayFlag = false
-            this.windy.overlayFlag = this.overlayFlag
-            await this.windy.closeOverlay()
+            windy.overlayFlag = this.overlayFlag
+            await windy.closeOverlay()
             if (value === '广东') {
-                this.windy.windy.changeVerlayOutLineData(guangdongshengJSON.data)
+                windy.windy.changeVerlayOutLineData(guangdongshengJSON.data)
             } else if (value === '广州') {
-                this.windy.windy.changeVerlayOutLineData(guangzhoushiJSON.data)
+                windy.windy.changeVerlayOutLineData(guangzhoushiJSON.data)
             } else {
-                this.windy.windy.changeVerlayOutLineData(ZHJSON.data)
+                windy.windy.changeVerlayOutLineData(ZHJSON.data)
             }
 
             this.overlayFlag = true
-            this.windy.overlayFlag = this.overlayFlag
-            await this.windy.openOverlay()
+            windy.overlayFlag = this.overlayFlag
+            await windy.openOverlay()
         },
 
         changeParams(value) {
-            this.windy.type = value
+            windy.type = value
             this.changeArea(this.areaName)
         }
     },

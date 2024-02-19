@@ -31,7 +31,7 @@ export default {
                       <h4>1. 使用Echart和百度地图的API生成</h4>
                       <h4>2. 根据不同的高度的污染物的污染程度来预测轨迹的来源</h4>
                     `,
-            duration: 0
+
         })
 
         window.addEventListener('resize', this.resize, false)
