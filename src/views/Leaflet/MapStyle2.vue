@@ -15,6 +15,7 @@ export default {
     async mounted() {
         const map = await initMap(this.leafletId)
         createControl(map, {layerName: '智图-默认图层'})
+        console.log('测试一下')
 
 
         this.$notify.success({
