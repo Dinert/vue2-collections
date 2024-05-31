@@ -130,7 +130,7 @@ export default {
     methods: {
         inputClick(value) {
             const styleName = 'amap://styles/' + value
-            this.gaodeMap.setMapStyle(styleName)
+            gaodeMap.setMapStyle(styleName)
         },
 
         querySearch(queryString, cb) {

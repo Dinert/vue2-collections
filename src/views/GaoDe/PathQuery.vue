@@ -139,7 +139,6 @@ export default {
             const styleName = 'amap://styles/' + value
             gaodeMap.setMapStyle(styleName)
         },
-
         searchFn(startText, endText) {
 
             const driving = new AMap.Driving({
