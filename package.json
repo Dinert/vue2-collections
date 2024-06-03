@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "eslint": "eslint src/**/*.js src/**/*.vue --fix",
-    "prepare": "husky install"
+    "prepare": "husky install "
   },
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
