@@ -108,11 +108,18 @@ export default {
         },
 
         // 加载css
-        async loadCss() {
-            if (!this.chalk) {
-                const url = `https://unpkg.com/element-ui@${version}/lib/theme-chalk/index.css`
-                await this.getCSSString(url, 'chalk')
-            }
+        loadCss() {
+            return new Promise((resolve, reject) => {
+                if (!this.chalk) {
+                    const url = `https://unpkg.com/element-ui@${version}/lib/theme-chalk/index.css`
+                    this.getCSSString(url, 'chalk').then(() => {
+                        resolve()
+                    }).catch(err => reject(err))
+                } else {
+                    reject()
+                }
+            })
+
         }
     },
     watch: {
@@ -137,26 +144,28 @@ export default {
             }
 
             // 加载css
-            await this.loadCss()
+            this.loadCss().then(() => {
+                getHandler('chalk', 'chalk-style')
 
-            getHandler('chalk', 'chalk-style')
+                // 过滤当前的style是否有旧的主题颜色
+                const styleAll = document.querySelectorAll('style')
+                const styles = [].slice.call(styleAll)
+                    .filter(style => {
+                        const text = style.innerText
+                        return new RegExp(oldVal, 'i').test(text) && !/Chalk Variables/.test(text)
+                    })
 
-            // 过滤当前的style是否有旧的主题颜色
-            const styleAll = document.querySelectorAll('style')
-            const styles = [].slice.call(styleAll)
-                .filter(style => {
-                    const text = style.innerText
-                    return new RegExp(oldVal, 'i').test(text) && !/Chalk Variables/.test(text)
+                // 修改主题色
+                styles.forEach(style => {
+                    const {innerText} = style
+                    if (typeof innerText !== 'string') {return}
+                    style.innerText = this.updateStyle(innerText, originalCluster, themeCluster)
                 })
 
-            // 修改主题色
-            styles.forEach(style => {
-                const {innerText} = style
-                if (typeof innerText !== 'string') {return}
-                style.innerText = this.updateStyle(innerText, originalCluster, themeCluster)
+                this.$emit('change', val)
+
             })
 
-            this.$emit('change', val)
 
         }
     }
