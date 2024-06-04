@@ -116,7 +116,7 @@ export default {
                         resolve()
                     }).catch(err => reject(err))
                 } else {
-                    reject()
+                    resolve()
                 }
             })
 
