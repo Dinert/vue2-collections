@@ -128,6 +128,10 @@ const routes = [
                 path: 'table',
                 component: () => import('@/views/ElementUI/DTable.vue'),
             },
+            {
+                path: 'form',
+                component: () => import('@/views/ElementUI/DForm.vue'),
+            }
         ]
     },
     {

@@ -196,7 +196,11 @@ export default {
                             'appName': '自适应表格',
                             'caption': '自适应高度表格',
                             'url': '/elementUI/table'
-
+                        },
+                        {
+                            'appName': '表单',
+                            'caption': '表单',
+                            'url': '/elementUI/form'
                         }
                     ]
                 }
