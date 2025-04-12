@@ -18,7 +18,7 @@
                 </div>
                 <nav-menu/>
             </div>
-            <div class="layout-body-right" :style="{width: `calc(100% - ${getHeaderShow ? '0px' : getNavMenuCollapse ? '64px' : '260px'})`}">
+            <div class="layout-body-right" :style="{width: `calc(100% - ${getWindowWidth1000 ? '0px' : getNavMenuCollapse ? '64px' : '260px'})`}">
                 <div class="layout-body-right-header">
                     <span class="layout-body-right-header-menu" :collapse="getNavMenuCollapse"
                         @click="changeCollapse(getNavMenuCollapse)"
