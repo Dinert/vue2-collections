@@ -56,9 +56,19 @@ export default {
             tabsList: [
                 {
                     message: '首页',
-                    url: '/home',
+                    url: '/leaflet/mapstyle',
                     ever: true,
                 },
+                {
+                    message: '风场',
+                    url: '/leaflet/windy',
+                    ever: true,
+                },
+                {
+                    message: '图片渲染',
+                    url: '/leaflet/render',
+                    ever: true,
+                }
             ],
 
             positions: {

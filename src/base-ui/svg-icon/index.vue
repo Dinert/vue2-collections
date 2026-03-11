@@ -1,9 +1,15 @@
 <template>
-    <svg :class="svgClass" aria-hidden="true"
+
+    <svg v-if="!iconClass.startsWith('el-icon')" :class="svgClass"
+        aria-hidden="true"
         v-on="$listeners"
     >
         <use :xlink:href="iconName"/>
     </svg>
+
+
+    <i v-else :class="iconClass"></i>
+
 </template>
 
 <script>

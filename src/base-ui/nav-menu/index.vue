@@ -125,6 +125,14 @@ export default {
                             'id': 20004,
                             'subMenuItems': [],
                             'url': '/gaode/pathQuery'
+                        },
+                        {
+                            'appName': '三级下钻',
+                            'caption': '三级下钻',
+                            icon: 'line',
+                            'id': 20054,
+                            'subMenuItems': [],
+                            'url': '/gaode/threeLevelDrill'
                         }
                     ],
                     'url': '/gaode'

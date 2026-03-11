@@ -17,7 +17,7 @@ export default {
         logo: false
     },
 
-    headerTabs: false,
+    headerTabs: true,
 
     // 是否全屏
     isFullscreen: false,

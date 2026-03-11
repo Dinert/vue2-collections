@@ -25,6 +25,7 @@ const routes = [
         children: [
             {
                 path: 'home',
+                redirect: '/leaflet/mapstyle',
                 component: () => import('@/views/Home'),
                 name: 'Home',
                 meta: {title: '首页'}
@@ -82,6 +83,10 @@ const routes = [
             {
                 path: 'pathQuery',
                 component: () => import('@/views/GaoDe/PathQuery.vue'),
+            },
+            {
+                path: 'threeLevelDrill',
+                component: () => import('@/views/GaoDe/ThreeLevelDrill.vue'),
             },
         ]
     },
