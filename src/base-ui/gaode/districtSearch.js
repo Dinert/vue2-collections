@@ -17,10 +17,10 @@ const districtSearch = function (options) { // 查询行政区域多个
 
         newOptions.mask = typeof newOptions.mask === 'string' ? [newOptions.mask] : newOptions.mask
 
-        const tempArr = []
-        const tempArr2 = []
+        const markArr = []
         const boundsArr = []
         const outLineArr = []
+        console.log(newOptions.mask, 'newOptions.mask')
         for (let i = 0; i < newOptions.mask.length; i++) {
             const name = newOptions.mask[i]
             district.search(name, (status, result) => {
@@ -29,25 +29,16 @@ const districtSearch = function (options) { // 查询行政区域多个
                     const bounds = result.districtList[0].boundaries
                     outLineArr.push(bounds)
                     let tempObj = []
-                    if (newOptions.origin) {
-                        for (let j = 0; j < bounds.length; j++) {
-                            tempArr.push([bounds[j]])
-                            boundsArr.push(bounds[j])
-                        }
-                        tempObj = {mask: tempArr, bounds: boundsArr, outLine: outLineArr, content: content}
-                        resolve(tempObj)
-                    } else {
 
-                        for (let i = 0; i < bounds.length; i++) {
-                            for (let j = 0; j < bounds[i].length; j++) {
-                                tempArr.push([bounds[i][j].lng, bounds[i][j].lat])
-                            }
-                            tempArr2.push(tempArr)
-                            boundsArr.push(bounds[i])
-                        }
-                        tempObj = {mask: tempArr, bounds: boundsArr, outLine: outLineArr, content: content}
+                    for (let j = 0; j < bounds.length; j++) {
+                        markArr.push([bounds[j]])
+                        boundsArr.push(bounds[j])
+                    }
+                    tempObj = {mask: markArr, bounds: boundsArr, outLine: outLineArr, content: content}
+                    if (i === newOptions.mask.length - 1) {
                         resolve(tempObj)
                     }
+
                 } else {
                     reject({
                         status: 0,
