@@ -71,8 +71,7 @@ const districtSearch = async function (options = {}) {
         return results
     }
 
-    // ⭐ 使用并发控制
-    const results = await runWithLimit(masks, 7)
+    const results = await Promise.all(masks.map(searchFn))
 
     const mask = []
     const bounds = []

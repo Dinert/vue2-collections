@@ -78,7 +78,7 @@ import initMap from '@/base-ui/gaode/initMap'
 import districtSearch from '@/base-ui/gaode/districtSearch2'
 
 let gaodeMap = null
-let polylines = []
+let polygons = []
 export default {
     name: 'AreaFace',
     async created() {
@@ -107,10 +107,10 @@ export default {
             title: '成功',
             dangerouslyUseHTMLString: true,
             message: `<h3>功能说明：</h3>
-                      <h4>1. 使用高德地图的API生成该区域的3D掩模</h4>
-                      <h4>2. 支持生成县级以上的区域掩模</h4>
+                      <h4>1. 使用高德地图的API生成该区域下城市或县的可视化区域</h4>
+                      <h4>2. 支持生成市级以上的可视化</h4>
                     `,
-            duration: 0
+            duration: 3000
         })
     },
 
@@ -168,8 +168,8 @@ export default {
             }
 
             gaodeMap.setMask([])
-            polylines.forEach(line => line.setMap(null))
-            polylines = []
+            polygons.forEach(line => line.setMap(null))
+            polygons = []
 
             return districtSearch({
                 mask: [this.name]
@@ -191,6 +191,14 @@ export default {
 
                 }
 
+                if (content.level === 'district') {
+                    return this.$message({
+                        type: 'error',
+                        message: '请输入区县级以上的区域名称',
+                        duration: 3000
+                    })
+                }
+
 
                 districtSearch({
                     mask: names,
@@ -198,20 +206,23 @@ export default {
                     extensions: 'all',
                     subdistrict: 0
                 }).then(res2 => {
+                    console.log(res, 'res2')
+
 
                     gaodeMap.setMask(res2.mask)
 
                     res2.strokePaths.forEach(path => {
 
-                        const polyline = new AMap.Polyline({
+                        const polygon = new AMap.Polygon({
                             path,
+                            strokeWeight: 1,
                             strokeColor: '#00ffff',
-                            strokeWeight: 4,
-                            strokeOpacity: 1,
+                            fillColor: '#80d8ff',
+                            fillOpacity: 0.2,
                             map: gaodeMap
                         })
 
-                        polylines.push(polyline)
+                        polygons.push(polygon)
 
                     })
 
@@ -223,7 +234,7 @@ export default {
                     })
 
                     setTimeout(() => {
-                        gaodeMap.setFitView(polylines)
+                        gaodeMap.setFitView(polygons)
                     }, 500)
 
                 }).catch(err => {
@@ -251,7 +262,7 @@ export default {
 
             //     res.strokePaths.forEach(path => {
 
-            //         new AMap.Polyline({
+            //         new AMap.polygon({
             //             path,
             //             strokeColor: '#00ffff',
             //             strokeWeight: 4,
