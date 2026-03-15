@@ -129,7 +129,7 @@ export default {
                         {
                             'appName': '三级下钻',
                             'caption': '三级下钻',
-                            icon: 'line',
+                            icon: 'drill',
                             'id': 20054,
                             'subMenuItems': [],
                             'url': '/gaode/threeLevelDrill'

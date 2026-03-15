@@ -1,9 +1,6 @@
 import _ from 'lodash'
 import AMapLoader from '@amap/amap-jsapi-loader'
-let lastMapOptions = {}
-window._AMapSecurityConfig = {
-    securityJsCode: '530231bc60a6258f7fa6b84d5d532761',
-}
+
 const initMap = (id, options, loadOptions) => {
 
     AMapLoader.reset && AMapLoader.reset()
@@ -17,16 +14,28 @@ const initMap = (id, options, loadOptions) => {
     return new Promise((resolve, reject) => {
 
         const newOptions = _.defaultsDeep(_.cloneDeep(options), defaultOptions)
+
+
         const newLoadOptions = _.defaultsDeep(_.cloneDeep(loadOptions), {
-            key: '720d49e9651522b9b4661195147dc067',
+            key: 'ab5526c9d205b1ee377b16330f4b314c',
             version: '2.0',
             plugins: [],
         })
 
-        AMapLoader.load(newLoadOptions).then(AMap => {
-            lastMapOptions = newLoadOptions
-            console.log(lastMapOptions, 'lastMapOptions')
+        if (newLoadOptions.key === 'ab5526c9d205b1ee377b16330f4b314c') {
+            window._AMapSecurityConfig = {
+                securityJsCode: '21f7ccacf1387ef689253e42c48d7343',
+                serviceHost: '/_AMapService', // 设置代理
+                cache: true, // 启用缓存
+                load: 'sync' // 同步加载
+            }
+        } else {
+            window._AMapSecurityConfig = {
+                securityJsCode: '530231bc60a6258f7fa6b84d5d532761',
+            }
+        }
 
+        AMapLoader.load(newLoadOptions).then(AMap => {
             const map = new AMap.Map(id, newOptions)
             resolve(map)
         }).catch(e => {

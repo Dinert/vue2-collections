@@ -76,18 +76,16 @@
 import initMap from '@/base-ui/gaode/initMap'
 
 import districtSearch from '@/base-ui/gaode/districtSearch2'
+import {notifySuccess} from '@/utils/notify'
+import {messageSuccess} from '@/utils/message'
+
 
 let gaodeMap = null
 let polygons = []
 export default {
     name: 'AreaFace',
     async created() {
-        window._AMapSecurityConfig = {
-            securityJsCode: '21f7ccacf1387ef689253e42c48d7343',
-            serviceHost: '/_AMapService', // 设置代理
-            cache: true, // 启用缓存
-            load: 'sync' // 同步加载
-        }
+
         gaodeMap = await initMap('map', {
             viewMode: '3D',
             features: ['point'],
@@ -103,14 +101,13 @@ export default {
 
         this.search()
 
-        this.$notify.success({
+        notifySuccess({
             title: '成功',
             dangerouslyUseHTMLString: true,
             message: `<h3>功能说明：</h3>
                       <h4>1. 使用高德地图的API生成该区域下城市或县的可视化区域</h4>
                       <h4>2. 支持生成市级以上的可视化</h4>
                     `,
-            duration: 3000
         })
     },
 
@@ -227,10 +224,8 @@ export default {
                     })
 
 
-                    this.$message({
-                        type: 'success',
+                    messageSuccess({
                         message: '渲染' + this.name + '的区域成功',
-                        duration: 3000
                     })
 
                     setTimeout(() => {
@@ -238,7 +233,9 @@ export default {
                     }, 500)
 
                 }).catch(err => {
-                    console.log(err, 'err')
+                    messageError({
+                        message: '渲染' + this.name + '的区域失败',
+                    })
                 })
             })
 
