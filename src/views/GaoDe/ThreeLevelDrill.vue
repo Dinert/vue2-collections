@@ -93,7 +93,6 @@ export default {
         }, {
             plugins: ['Map3D', 'AMap.DistrictSearch', 'AMap.DistrictLayer'],
             version: '2.0',
-            key: 'ab5526c9d205b1ee377b16330f4b314c',
             Loca: {
                 version: '2.0'
             }

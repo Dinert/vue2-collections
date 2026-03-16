@@ -78,6 +78,7 @@ import districtSearch from '@/base-ui/gaode/districtSearch'
 import createOutLine from '@/base-ui/gaode/createOutLine'
 
 import {saveAs} from 'file-saver'
+import { notifySuccess } from '@/utils/notify'
 
 let gaodeMap = null
 let gaodeOutLine = null
@@ -97,7 +98,7 @@ export default {
         this.search()
 
 
-        this.$notify.success({
+        notifySuccess({
             title: '成功',
             dangerouslyUseHTMLString: true,
             message: `<h3>功能说明：</h3>

@@ -23,6 +23,7 @@ import initMap from '@/base-ui/leaflet/initMap'
 import createControl from '@/base-ui/leaflet/createControl'
 
 import '/public/assets/js/leaflet.Windy.js'
+import {notifySuccess} from '@/utils/notify'
 
 const ZHJSON = require('@/assets/json/ZH.json')
 const guangdongshengJSON = require('@/assets/json/guangdongsheng.json')
@@ -38,10 +39,13 @@ export default {
         createControl(map, {layerName: '智图-默认图层-暗蓝色'})
         windy = await this.initWindy(map)
 
-        this.$notify.success({
+        notifySuccess({
             title: '成功',
             message: '这是一个实时的风场，可选择区域进行渲染！'
         })
+    },
+    beforeDestroy() {
+        windy.closeWind()
     },
     data() {
         return {
