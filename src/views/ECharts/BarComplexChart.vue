@@ -12,6 +12,9 @@
         <div class="complexChart-item">
             <d-echart :chart-data="barChartData4" :options="barOptions4"/>
         </div>
+        <div class="complexChart-item">
+            <d-echart :chart-data="{}" :options="barOptions5"/>
+        </div>
     </div>
 </template>
 
@@ -22,6 +25,7 @@ import {barOptions1, barChartData1} from '@/base-ui/echarts/bar/bar1'
 import {barOptions2, barChartData2} from '@/base-ui/echarts/bar/bar2'
 import {barOptions3, barChartData3} from '@/base-ui/echarts/bar/bar3'
 import {barOptions4, barChartData4} from '@/base-ui/echarts/bar/bar4'
+import {barOptions5} from '@/base-ui/echarts/bar/bar5'
 
 export default {
     name: 'BarComplexChart',
@@ -44,6 +48,7 @@ export default {
             barChartData3,
             barOptions4,
             barChartData4,
+            barOptions5
         }
     },
 
