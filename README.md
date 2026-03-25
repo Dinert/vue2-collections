@@ -1,5 +1,5 @@
 # vue2-collections
 
-## 一个炫酷的演示平台
- ### 演示地址：[https://dinert.github.io/vue2-collections/](https://dinert.github.io/vue2-collections/)
+## A cool demo platform
+ ### Demo Address：[https://dinert.github.io/vue2-collections/](https://dinert.github.io/vue2-collections/)
 
