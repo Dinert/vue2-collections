@@ -285,7 +285,7 @@ export default {
 
 ::v-deep {
     .amap-layers {
-        background: url("@/assets/img/gaode/map-bg.png") 100% 100% no-repeat;
+        // background: url("@/assets/img/gaode/map-bg.png") 100% 100% no-repeat;
     }
 }
 
