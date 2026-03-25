@@ -32,7 +32,21 @@ export const barOptions5 = {
         type: 'value',
         show: false
     },
-
+    tooltip: {
+        backgroundColor: 'rgba(20,43,80,0.89)',
+        borderColor: 'transparent',
+        textStyle: {
+            color: '#FFF'
+        },
+        axisPointer: {
+            type: 'shadow'
+        },
+        formatter: params => {
+            const template = `<div>条形图</div>
+                             <div>${params.name}：${values[params.dataIndex]}</div>`
+            return template
+        }
+    },
     yAxis: {
         type: 'category',
         inverse: true,
@@ -48,26 +62,7 @@ export const barOptions5 = {
 
     series: [
 
-        // 👉 专门用于显示右侧数值（关键）
-        {
-            type: 'bar',
-            data: new Array(values.length).fill(max),
-            barWidth: 10,
-            barGap: '-100%',
-            itemStyle: {
-                color: 'transparent'
-            },
-            label: {
-                show: true,
-                position: [0, '-200%'],
-                distance: 10,
-                color: '#fff',
-                fontSize: 14,
-                formatter: v => {
-                    return names[v.dataIndex]
-                }
-            }
-        },
+
         // 背景条
         {
             type: 'bar',
@@ -92,8 +87,27 @@ export const barOptions5 = {
                 ])
             }
         },
-
-        // 👉 专门用于显示右侧数值（关键）
+        // 👉 专门用于显示左侧
+        {
+            type: 'bar',
+            data: new Array(values.length).fill(max),
+            barWidth: 10,
+            barGap: '-100%',
+            itemStyle: {
+                color: 'transparent'
+            },
+            label: {
+                show: true,
+                position: [0, '-200%'],
+                distance: 10,
+                color: '#fff',
+                fontSize: 14,
+                formatter: v => {
+                    return names[v.dataIndex]
+                }
+            }
+        },
+        // 👉 专门用于显示右侧数值
         {
             type: 'bar',
             data: new Array(values.length).fill(max),
