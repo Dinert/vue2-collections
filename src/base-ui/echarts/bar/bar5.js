@@ -10,7 +10,7 @@ const names = [
     '数据5'
 ]
 
-const values = [63980, 53980, 43980, 26240, 23320]
+const values = [63980, 53980, 4980, 26240, 23320]
 const max = Math.max(...values)
 
 export const barOptions5 = {
@@ -118,9 +118,10 @@ export const barOptions5 = {
             },
             label: {
                 show: true,
-                position: ['84%', '-200%'],
+                position: ['100%', '-200%'],
                 distance: 0,
                 color: '#fff',
+                align: 'right',
                 fontSize: 14,
                 formatter: v => {
                     return values[v.dataIndex].toLocaleString() + '元'
