@@ -20,7 +20,7 @@ VueRouter.prototype.replace = function push(location) {
 const routes = [
     {
         path: '/',
-        redirect: '/leaflet',
+        redirect: '/gaode',
         component: Layout,
         children: [
             {
