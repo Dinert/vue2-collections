@@ -3,7 +3,7 @@
         @command="commandSelect"
     >
         <div class="avater">
-            <img src="https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80" alt="图片">
+            <img src="https://avatars.githubusercontent.com/u/35824497?v=4&size=64" alt="图片">
             <span>哈哈哈哈</span>
         </div>
         <el-dropdown-menu slot="dropdown">
